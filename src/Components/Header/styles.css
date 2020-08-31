@@ -1,0 +1,26 @@
+nav{
+    background-color: #A0522D;
+    display: flex;
+    left: 0px;
+    right: 0px;
+    margin: 0px;
+    padding: 0.7rem;
+    top: 0px;
+    width: 100vw;
+    height: 9vh;
+    justify-content: space-between;
+    flex-direction: row;
+    position: absolute;
+    align-items: center;
+    overflow: hidden;
+}
+
+.viewSalir{
+    justify-content: center;
+    flex-direction: row;  
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
