@@ -5,7 +5,7 @@ const FormAdmin: React.FC = () => {
     return (
         <div className='form-admin'>
              <img src={Logo2} width='80%' height='30%' alt="Menina Levada"/>
-            <form >
+            <form onSubmit={()=>console.log('SUBMIT')} action='' >
                 <input type="text" id="nuser" name="user" placeholder="Usuário" />
 
                 <input type="password" id="pass" name="password" placeholder="Senha" />

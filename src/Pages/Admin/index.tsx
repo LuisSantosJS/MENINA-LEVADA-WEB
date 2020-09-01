@@ -13,7 +13,7 @@ const Admin: React.FC = () => {
         }
         // eslint-disable-next-line
         return addcToash();
-    }, [])
+    }, [addToast])
     return (
         <div className='container'>
             <Header />
