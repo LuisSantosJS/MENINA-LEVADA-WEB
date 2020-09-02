@@ -11,13 +11,111 @@
 
 
 .form-main{
+    display: flex;
     width: 60vw;
+    flex-wrap: wrap;
     height: 30vw;
     max-width: 700px;
     background-color:white;
     box-shadow: 10px 10px 5px  #CD853F;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
 }
 
+.viewLabel{
+    display: flex;
+    width: 38%;
+    flex-direction: column;
+}
+
+label{
+    color: gray;
+    font-size: 0.8rem;
+}
+
+.inputdecima{
+    display: flex;
+    flex-direction: row;
+    width: 90vw;
+    justify-content: space-around;
+    justify-items: center;
+    align-items: center;
+
+}
+.viewTruck{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 8%;
+
+}
+.truck{
+    width: 50%;
+    height: 50%;
+}
+.inputs{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.viewpreco{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    width: 100vw;
+    height: 8vh;
+
+}
+
+
+
+
+
+.viewinputpreco{
+    display: flex;
+    width: 94%;
+    height: 100%;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+.inputpreco{
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 87%;
+    height: 100%;
+}
+.iconpreco{
+    display:flex;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    padding: 0.8rem;
+    justify-content: center;
+    height: 100%;
+    width: 11%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #808080
+}
 
 
 @media screen and (max-width: 900px) {
@@ -25,6 +123,7 @@
         width: 80vw;
         height:  70vh;
     }
+
 }
 
   @media screen and (max-width: 1100px) {
@@ -39,8 +138,32 @@
         width: 90vw;
         height:  75vh;
     }
+
 }
 
+
+@media screen and (max-width: 400px) {
+    .inputdecima{
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    .viewLabel{
+        width: 85%;
+    }
+    .viewTruck{
+        display: none;
+    }
+    .viewinputpreco{
+        width: 85%;
+    }
+    .inputpreco{
+        width: 67%;
+    }
+    .iconpreco{
+        width: 27%;
+    }
+
+}
 
 
 

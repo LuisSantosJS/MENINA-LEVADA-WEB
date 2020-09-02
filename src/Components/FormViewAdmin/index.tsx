@@ -4,7 +4,7 @@ import FormAdmin from '../FormAdmin'
 const FormViewAdmin: React.FC = () => {
     return (
         <div className='viewForm'>
-                <FormAdmin/>
+         <FormAdmin/>
         </div>
     )
 }

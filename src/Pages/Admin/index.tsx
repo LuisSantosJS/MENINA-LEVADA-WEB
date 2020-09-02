@@ -7,7 +7,7 @@ const Admin: React.FC = () => {
     useEffect(() => {
         function addcToash() {
             addToast('Insira suas credenciais para acessar esta página!', {
-                appearance: 'success',
+                appearance: 'info',
                 autoDismiss: true,
             })
         }
@@ -17,8 +17,7 @@ const Admin: React.FC = () => {
     return (
         <div className='container'>
             <Header />
-            <FormViewAdmin>
-            </FormViewAdmin>
+            <FormViewAdmin/>
         </div>
     );
 }
