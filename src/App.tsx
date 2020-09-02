@@ -1,10 +1,13 @@
 import React from 'react';
-import Routes from './Router'
+import Routes from './Router';
+import Provider from './Context/ContextMain';
 import './styles.css'
 function App() {
   return (
     <div className="App">
-      <Routes />
+      <Provider>
+        <Routes />
+      </Provider>
     </div>
   );
 }

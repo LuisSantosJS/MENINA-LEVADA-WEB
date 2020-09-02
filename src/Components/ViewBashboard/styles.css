@@ -1,0 +1,16 @@
+.view{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+    bottom: 0px;
+    background-color: #F4A460;
+    left: 0px;
+    right: 0px;
+    overflow: hidden;
+
+}

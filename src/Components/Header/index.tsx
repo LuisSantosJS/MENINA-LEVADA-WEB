@@ -14,15 +14,16 @@ const Header: React.FC = () => {
             appearance: 'success',
             autoDismiss: true,
         })
+        localStorage.clear();
     }
     return (
 
         <nav className='navbar'>
             <img src={Logo} className='logo' width='170' height='40' alt="Menina levada" />
             {userSaved &&
-                <span className='viewSalir' onClick={handleExit}>
+                <div className='viewSalir' onClick={handleExit} >
                     <img src={Salir} className='salir' width='20px' height='20px' alt="Menina levada" />
-                </span>}
+                </div>}
 
         </nav>
 

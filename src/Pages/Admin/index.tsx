@@ -1,23 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Header from '../../Components/Header';
 import FormViewAdmin from '../../Components/FormViewAdmin';
-import { useToasts } from 'react-toast-notifications'
+// import { useToasts } from 'react-toast-notifications'
+// import { useUserSaved } from '../../Context/ContextMain';
 const Admin: React.FC = () => {
-    const { addToast } = useToasts();
-    useEffect(() => {
-        function addcToash() {
-            addToast('Insira suas credenciais para acessar esta página!', {
-                appearance: 'info',
-                autoDismiss: true,
-            })
-        }
-        // eslint-disable-next-line
-        return addcToash();
-    }, [addToast])
+
     return (
         <div className='container'>
             <Header />
-            <FormViewAdmin/>
+            <FormViewAdmin />
         </div>
     );
 }

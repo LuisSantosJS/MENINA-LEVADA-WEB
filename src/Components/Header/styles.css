@@ -16,11 +16,14 @@ nav{
 }
 
 .viewSalir{
+    display: flex;
     justify-content: center;
     flex-direction: row;  
-    width: 10%;
-    height: 100%;
-    display: flex;
+    width: 10vw;
+    height: 10vw;
     align-items: center;
+}
+span{
+    background-color: none;
 }
 

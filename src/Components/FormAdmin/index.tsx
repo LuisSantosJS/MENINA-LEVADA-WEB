@@ -1,12 +1,19 @@
 import React, { useState } from 'react'
 import './styles.css';
+import api from '../../Service/api';
 import Logo2 from '../../Assets/logo2.png';
 import { useToasts } from 'react-toast-notifications';
+import { useUserSaved } from '../../Context/ContextMain';
 import * as EmailValidator from 'email-validator';
 const FormAdmin: React.FC = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const { addToast } = useToasts();
+    const { setUserSaved } = useUserSaved();
+    const cleanInputs = () => {
+        setPassword('');
+        setEmail('');
+    }
     const handleSubmit = () => {
         const validEmail = EmailValidator.validate(String(email));
         if (email.length === 0) {
@@ -15,7 +22,7 @@ const FormAdmin: React.FC = () => {
                 autoDismiss: true,
             })
         }
-        if(validEmail === false){
+        if (validEmail === false) {
             return addToast('Insira um email válido!', {
                 appearance: 'error',
                 autoDismiss: true,
@@ -27,11 +34,32 @@ const FormAdmin: React.FC = () => {
                 autoDismiss: true,
             })
         }
-        
-        addToast('Sucesso', {
-            appearance: 'success',
-            autoDismiss: true,
+        api.post('/admin/login', {
+            email: String(email).toLowerCase(),
+            password: password
+        }).then(res => {
+            if (String(res.data.message) === 'success') {
+                addToast(String(res.data.res), {
+                    appearance: 'success',
+                    autoDismiss: true,
+                })
+                setUserSaved(true);
+                localStorage.setItem('@userSaved', 'true');
+            } else {
+                addToast(String(res.data.res), {
+                    appearance: 'error',
+                    autoDismiss: true,
+                })
+            }
+        }).catch(() => {
+            addToast('Ocorreu um erro!', {
+                appearance: 'error',
+                autoDismiss: true,
+            })
         })
+
+        return cleanInputs();
+
     }
     return (
         <div className='form-admin'>

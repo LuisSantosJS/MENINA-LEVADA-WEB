@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 
 type ContextType = {
@@ -21,7 +21,13 @@ const Provider: React.FC = ({ children }) => {
 
     const [userSaved, setUserSaved] = useState<boolean>(false);
 
-
+    useEffect(() => {
+        const isSaved = localStorage.getItem('@userSaved');
+       // console.log('isSaved', isSaved)
+        if (String(isSaved) === 'true') {
+            setUserSaved(true)
+        }
+    }, [])
 
     return (
         <ContextMain.Provider value={{
