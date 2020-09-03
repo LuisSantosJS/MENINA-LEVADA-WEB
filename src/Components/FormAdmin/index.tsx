@@ -67,7 +67,7 @@ const FormAdmin: React.FC = () => {
             <form onSubmit={handleSubmit}>
                 <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Senha" />
-                <span onClick={handleSubmit} defaultValue="Fazer Login" >Fazer Login</span>
+                <strong onClick={handleSubmit} defaultValue="Fazer Login" >Fazer Login</strong>
             </form>
         </div>
     )

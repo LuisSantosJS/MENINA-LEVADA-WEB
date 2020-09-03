@@ -1,6 +1,7 @@
 .viewForm{
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    max-height: unset;
     display: flex;
     align-items: center;
     justify-items: center;
