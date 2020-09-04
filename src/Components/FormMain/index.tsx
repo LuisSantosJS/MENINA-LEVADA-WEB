@@ -1,12 +1,47 @@
 import React, { useState } from 'react';
-
-import './styles.css'
-import Truck from '../../Assets/delivery.png'
+import api from '../../Service/api';
+import './styles.css';
+import Truck from '../../Assets/delivery.png';
 import { useConfig } from '../../Context/ContextConfig';
 const FormMain: React.FC = () => {
     const { config } = useConfig();
     const [service, setService] = useState<string>('0')
     const [format, setFormat] = useState<string>('0')
+    const [pricing, setPricing] = useState<string>('');
+    const [cep, setCep] = useState<string>('');
+    const [comprimento, setComprimento] = useState<string>('');
+    const [largura, setLargura] = useState<string>('');
+    const [altura, setAltura] = useState<string>('');
+    const [diametro, setDiametro] = useState<string>('');
+    const [peso, setPeso] = useState<string>('');
+    const [preco, setPreco] = useState<string>('');
+    const [dias, setDias] = useState<string>('');
+    const [isSubmit, setIsSubmit] = useState<boolean>(false);
+    const handleSubmit = () => {
+        if (isSubmit) {
+            return;
+        }
+        setIsSubmit(true);
+        const DATA = {
+            sCepDestino: cep,
+            nVlPeso: peso,
+            nCdFormato: format,
+            nVlComprimento: comprimento,
+            nVlAltura: altura,
+            nVlLargura: largura,
+            nCdServico: service,
+            nVlDiametro: diametro,
+        }
+        // api.post('/calc', DATA).then(res => {
+        //     if (res.data.message === 'error') {
+        //         return;
+        //     }
+        //     setPreco(res.data.Valor);
+        //     setDias(res.data.PrazoEntrega);
+        // });
+
+        return setIsSubmit(false)
+    }
 
     return (
         <div className='form-main'>
@@ -20,9 +55,10 @@ const FormMain: React.FC = () => {
                 </div>
                 <div className="viewLabel">
                     <label>Destino</label>
-                    <input className='inputs' type='number' placeholder='CEP' />
+                    <input className='inputs' value={cep} onChange={(e) => setCep(e.target.value)} type='number' placeholder='CEP' />
                 </div>
             </div>
+
             <div className='inputdeservico'>
                 <select id="Servico" value={service} onChange={(e) => setService(e.target.value)} name="Serviço">
                     <option value="0">Selecione o tipo de serviço</option>
@@ -44,29 +80,41 @@ const FormMain: React.FC = () => {
                 </select>
             </div>
 
+
             <div className='inputreal2'>
                 <div className="viewLabel2">
                     <label className='labelss'>Comprimento(cm)</label>
-                    <input type='number' className='inputpreco' placeholder='Comprimento' />
+                    <input type='number' value={comprimento} onChange={(e) => setComprimento(e.target.value)} className='inputpreco' placeholder='Comprimento' />
                 </div>
                 <div className="viewLabel2">
                     <label className='labelss'>Altura(cm)</label>
-                    <input type='number' className='inputpreco' placeholder='Altura' />
+                    <input type='number' value={altura} onChange={(e) => setAltura(e.target.value)} className='inputpreco' placeholder='Altura' />
                 </div>
             </div>
 
             <div className='inputreal2'>
                 <div className="viewLabel2">
                     <label className='labelss' >Largura(cm)</label>
-                    <input type='number' className='inputpreco' placeholder='Largura' />
+                    <input type='number' value={largura} onChange={(e) => setLargura(e.target.value)} className='inputpreco' placeholder='Largura' />
                 </div>
                 <div className="viewLabel2">
                     <label className='labelss'>Diametro(cm)</label>
-                    <input type='number' className='inputpreco' placeholder='Diametro' />
+                    <input type='number' value={diametro} onChange={(e) => setDiametro(e.target.value)} className='inputpreco' placeholder='Diametro' />
+                </div>
+            </div>
+            <div className='inputreal2'>
+                <div className="viewLabel2">
+                    <label className='labelss' >Peso (kg)</label>
+                    <input type='number' value={peso} onChange={(e) => setPeso(e.target.value)} className='inputpreco' placeholder='Peso' />
+                </div>
+                <div className="viewLabel2">
+                    <label className='labelss'>Preço (R$)</label>
+                    <input type='number' value={pricing} onChange={(e) => setPricing(String(e.target.value))} className='inputpreco' placeholder='Preço' />
                 </div>
             </div>
 
-            <span defaultValue="Calcular" >Calcular</span>
+
+            <span onClick={handleSubmit} defaultValue={'Calcular'} >{!isSubmit ? `Calcular` : 'Aguarde'}</span>
         </div>
     )
 }

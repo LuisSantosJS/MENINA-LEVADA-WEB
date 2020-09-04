@@ -14,12 +14,13 @@
     display: flex;
     width: 60vw;
     padding-top: 20px;
+    
     flex-wrap: wrap;
     height: 30vw;
     max-width: 700px;
     background-color:white;
     box-shadow: 10px 10px 5px  #CD853F;
-    justify-items: center;
+    justify-items: stretch;
     align-items: center;
     justify-content: center;
     overflow-y: scroll;
@@ -43,6 +44,14 @@
     flex-direction: column;
 }
 
+.viewLabel3{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    padding: none;
+    flex-direction: row;
+}
+
 label{
     color: gray;
     font-size: 0.8rem;
@@ -52,6 +61,7 @@ label{
     display: flex;
     flex-direction: row;
     width: 85%;
+
     /* 76vw; */
     justify-content: space-around;
     justify-items: center;
@@ -62,11 +72,19 @@ label{
     display: flex;
     flex-direction: row;
     width: 100%;
-    
     justify-content: space-around;
     justify-items: center;
     align-items: center;
 
+}
+.inputmerc{
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 .inputreal{
     display: flex;
@@ -85,6 +103,7 @@ label{
     justify-items: center;
     align-items: center;
 }
+
 .viewTruck{
     display: flex;
     justify-items: center;
@@ -116,6 +135,12 @@ label{
     align-items: center;
     width: 100vw;
     height: 8vh;
+
+}
+.viewLabe{
+    flex-direction: row;
+    display: flex;
+
 
 }
 
@@ -193,7 +218,7 @@ select {
 @media screen and (max-width: 900px) {
     .form-main{
         width: 80vw;
-        height:  70vh;
+        height:  75vh;
     }
 
 
@@ -202,14 +227,14 @@ select {
   @media screen and (max-width: 1100px) {
     .form-main{
         width: 70vw;
-        height:  60vh;
+        height:  65vh;
     }
 }
 
 @media screen and (max-width: 1300px ) {
     .form-main{
         width: 90vw;
-        height:  75vh;
+        height:  80vh;
 
     }
 
@@ -252,7 +277,7 @@ select {
         width: 85%;
     }
     .inputpreco{
-        width: 88%;
+        width: 85%;
     }
     .iconpreco{
         width: 27%;
@@ -268,7 +293,10 @@ select {
     .labelss{
         width: 100%;
         justify-content: start;
-        padding-left: 1rem;
+        padding-left: 1.5rem;
+    }
+    .inputmerc{
+        width: 72%;
     }
 }
 
@@ -312,6 +340,7 @@ select {
     border-bottom-left-radius: 4px;
 
  }
+
 }
  
     
