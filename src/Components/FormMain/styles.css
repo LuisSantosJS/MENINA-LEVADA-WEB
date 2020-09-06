@@ -14,16 +14,28 @@
     display: flex;
     width: 60vw;
     padding-top: 20px;
-    
     flex-wrap: wrap;
     height: 30vw;
     max-width: 700px;
+    padding: 30px;
     background-color:white;
     box-shadow: 10px 10px 5px  #CD853F;
-    justify-items: stretch;
     align-items: center;
-    justify-content: center;
+    justify-content:space-around;
     overflow-y: scroll;
+}
+
+.form-view{
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    flex-wrap: wrap;
+    max-height: auto;
+    align-items: center;
+    justify-content:center;
+    justify-items: center;
+    overflow-y: scroll;
+
 }
 
 .viewLabel{
@@ -33,6 +45,7 @@
 }
 .viewLabel{
     display: flex;
+    height: 100%;
     width: 38%;
     flex-direction: column;
 }
@@ -43,13 +56,30 @@
     padding: none;
     flex-direction: column;
 }
-
+.viewLabel4{
+    display: flex;
+    width: 80%;
+    padding: none;
+    flex-direction: column;
+}
+.viewResult{
+    display: flex;
+    width: 80%;
+    height: 30%;
+    overflow-y: scroll;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
 .viewLabel3{
     display: flex;
     height: 100%;
     width: 100%;
     padding: none;
     flex-direction: row;
+    background-color: red;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 label{
@@ -103,6 +133,14 @@ label{
     justify-items: center;
     align-items: center;
 }
+.inputreal3{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content:  center;
+    justify-items: center;
+    align-items: center;
+}
 
 .viewTruck{
     display: flex;
@@ -127,6 +165,23 @@ label{
     box-sizing: border-box;
 }
 
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #e5e5e5;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even){background-color: #f2f2f2}
+  
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
 .viewpreco{
     display: flex;
     flex-direction: row;
@@ -194,6 +249,16 @@ select {
     background-color: #f1f1f1;
 }
 
+.inputpreco2{
+    display: block;
+    width: 80%;
+    height: 100%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+
 .iconpreco{
     display:flex;
     justify-items: center;
@@ -211,6 +276,7 @@ select {
 }
 
 .labelss{
+    width: 10%;
     padding: 2%;
 }
 
@@ -260,13 +326,15 @@ select {
     .viewLabel{
         width: 85%;
     }
+    .viewLabel4{
+        width: 74%;
+    }
     .viewLabel2{
         width: 100%;
         height: 100%;
         justify-content: space-around;
         align-items: center;
         justify-items: center;
-
     }
     .viewTruck{
         display: none;
@@ -278,6 +346,9 @@ select {
     }
     .inputpreco{
         width: 85%;
+    }
+    .inputpreco2{
+        width: 95%;
     }
     .iconpreco{
         width: 27%;
@@ -297,6 +368,13 @@ select {
     }
     .inputmerc{
         width: 72%;
+    }
+    .form-view{
+
+        min-height: 120vh;
+    }
+    .viewResult{
+        width: 73.5%;
     }
 }
 
@@ -322,6 +400,18 @@ select {
 .inputpreco{
     display: block;
     width: 90%;
+    height: 100%;
+    padding: 16px 20px;
+    border: none;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background-color: #f1f1f1;
+}
+.inputpreco2{
+    display: block;
+    width: 85%;
     height: 100%;
     padding: 16px 20px;
     border: none;
