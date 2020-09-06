@@ -5,6 +5,7 @@ import { isMobile } from 'react-device-detect';
 import Truck from '../../Assets/delivery.png';
 import { useConfig } from '../../Context/ContextConfig';
 import { useToasts } from 'react-toast-notifications';
+// @ts-ignore
 
 interface RESULT {
     pricing: string;
@@ -22,8 +23,6 @@ const FormMain: React.FC = () => {
     const [altura, setAltura] = useState<string>('');
     const [peso, setPeso] = useState<string>('');
     const [results, setResults] = useState<RESULT[]>([]);
-
-
     const SERVICES = [
         {
             cod: '04014',
@@ -32,6 +31,9 @@ const FormMain: React.FC = () => {
             cod: '04510'
         }
     ];
+
+
+
 
     //04014  SEDEX à vista
     //04510  PAC à vista
@@ -78,7 +80,7 @@ const FormMain: React.FC = () => {
                             service: String(getNameService(String(res.data.Codigo)))
 
                         }
-                        setResults([...results, RESU])
+                        setResults(results => [...results, RESU])
                     }
                 }
             })
@@ -99,33 +101,37 @@ const FormMain: React.FC = () => {
                     </div>
                     <div className="viewLabel">
                         <label>Destino</label>
-                        <input className='inputs' value={cep} onChange={(e) => setCep(e.target.value)} type='number' placeholder='CEP' />
+                        <input type='number' className='inputs' value={cep} onChange={(e) => setCep(e.target.value)} placeholder='CEP' />
+
                     </div>
                 </div>
                 <div className="viewLabel4">
                     <label>{!isMobile ? 'R$' : 'Reais(R$)'}</label>
-                    <input className='inputs' value={pricing} onChange={(e) => setPricing(String(e.target.value))} type='number' placeholder='Preço da mercadoria' />
+                    <input type='number' value={pricing} className='inputs' placeholder='Preço da mercadoria (R$)' onChange={(e) => setPricing(String(e.target.value))} />
                 </div>
                 <div className='inputreal2'>
                     <div className="viewLabel2">
                         <label className='labelss'>{!isMobile ? 'cm' : 'Comprimento(cm)'}</label>
-                        <input type='number' value={comprimento} onChange={(e) => setComprimento(e.target.value)} className='inputpreco' placeholder='Comprimento' />
+                        <input type='number' value={comprimento} placeholder='Comprimento (cm)' onChange={(e) => setComprimento(e.target.value)} className='inputs' />
                     </div>
                     <div className="viewLabel2">
                         <label className='labelss'>{!isMobile ? 'cm' : 'Altura(cm)'}</label>
-                        <input type='number' value={altura} onChange={(e) => setAltura(e.target.value)} className='inputpreco' placeholder='Altura' />
+                        <input type='number' value={altura} placeholder='Altura (cm)' onChange={(e) => setAltura(e.target.value)} className='inputs' />
                     </div>
                 </div>
 
                 <div className='inputreal2'>
                     <div className="viewLabel2">
                         <label className='labelss' >{!isMobile ? 'cm' : 'Largura(cm)'}</label>
-                        <input type='number' value={largura} onChange={(e) => setLargura(e.target.value)} className='inputpreco' placeholder='Largura' />
+
+                        <input type='number' value={largura} onChange={(e) => setLargura(e.target.value)} className='inputs' placeholder='Largura (cm)' />
+
                     </div>
                     <div className="viewLabel2">
                         <label className='labelss' >{!isMobile ? 'kg' : 'Peso (kg)'}</label>
-                        {/* <input type='number' value={peso} onChange={(e) => setPeso(e.target.value)} className='inputpreco' placeholder='Peso' /> */}
-                        <input type='number' value={peso} onChange={(e) => setPeso(e.target.value)} className='inputpreco' placeholder='Peso' />
+                        <input type='number' value={peso} placeholder='Peso (kg)' onChange={(e) => setPeso(e.target.value)} className='inputs' />
+                        {/* <input type='number' value={peso}  className='inputpreco' placeholder='Peso' /> */}
+                        {/* <Input className='inputpreco' placeholder='Peso' onChange={handleChangePeso} /> */}
                     </div>
                 </div>
                 {results.length !== 0 &&
@@ -143,8 +149,8 @@ const FormMain: React.FC = () => {
                                     return (
                                         <tr key={index}>
                                             <td>{res.service}</td>
-                                            <td>{res.days}</td>
-                                            <td>{res.pricing}</td>
+                                            <td>{res.days} dias</td>
+                                            <td>R${res.pricing}</td>
                                         </tr>
                                     )
                                 })}
