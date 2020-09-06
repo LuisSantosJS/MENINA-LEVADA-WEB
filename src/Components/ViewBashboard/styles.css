@@ -42,7 +42,7 @@
     display: flex;
     width: 100%;
     flex-wrap: wrap;
-    height: 100px;
+    height: 200px;
     align-items: center;
     justify-content: space-around;
 }
@@ -50,7 +50,6 @@
     display: flex;
     width: 70vw;
     height: 70vh;
-
     align-items: center;
     justify-content: center;
     justify-items: center;
@@ -59,10 +58,10 @@
 .form-view-bash{
     display: flex;
     width: 100%;
-    min-height: 100vh;
+    min-height: 145vh;
     flex-wrap: wrap;
     max-height: auto;
-    align-items:flex-start;
+    align-items:center;
     justify-content:center;
     overflow-y: scroll;
 
@@ -162,8 +161,7 @@ table {
         height: 75vh;
     } 
     .form-view-bash{
-
-        min-height: 120vh;
+        min-height: 170vh;
     }
 .floatbutton{
         top: 85vh;
@@ -171,6 +169,11 @@ table {
         width: 3.5rem;
         height: 3.5rem;
   }
+  .view-rast{
+      height: 140px;
+
+  }
+  
   .floatbutton-certi{
     top: 70vh;
     left: 80vw;
