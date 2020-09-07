@@ -119,6 +119,7 @@ label{
     display: flex;
     flex-direction: row;
     width: 80%;
+    background-color: #E5E5E5;
     justify-content: space-evenly;
     justify-items: center;
     align-items: center;
@@ -323,6 +324,7 @@ select {
 
     }
     .inputreal2{
+        display: flex;
         flex-wrap: wrap;
         flex-direction: column;
         width: 85%;
@@ -399,6 +401,7 @@ select {
 .viewLabel2{
     display: flex;
     width: 45%;
+
     padding: none;
     flex-direction: row;
 }

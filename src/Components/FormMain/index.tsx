@@ -6,6 +6,7 @@ import Truck from '../../Assets/delivery.png';
 import { useConfig } from '../../Context/ContextConfig';
 import { useToasts } from 'react-toast-notifications';
 // @ts-ignore
+import { mask } from 'remask';
 
 interface RESULT {
     pricing: string;
@@ -53,10 +54,10 @@ const FormMain: React.FC = () => {
         SERVICES.forEach(ser => {
             const DATA = {
                 sCepDestino: cep,
-                nVlPeso: peso,
-                nVlComprimento: comprimento,
-                nVlAltura: altura,
-                nVlLargura: largura,
+                nVlPeso: peso.replace(',', '.'),
+                nVlComprimento: comprimento.replace(',', '.'),
+                nVlAltura: altura.replace(',', '.'),
+                nVlLargura: largura.replace(',', '.'),
                 nCdServico: String(ser.cod)
             }
             console.log('DATA', DATA)
@@ -101,35 +102,34 @@ const FormMain: React.FC = () => {
                     </div>
                     <div className="viewLabel">
                         <label>Destino</label>
-                        <input type='number' className='inputs' value={cep} onChange={(e) => setCep(e.target.value)} placeholder='CEP' />
+                        <input className='inputs' value={cep} onChange={(e) => setCep(mask(e.target.value, ['99999999']))} placeholder='CEP' />
 
                     </div>
                 </div>
                 <div className="viewLabel4">
                     <label>{!isMobile ? 'R$' : 'Reais(R$)'}</label>
-                    <input type='number' value={pricing} className='inputs' placeholder='Preço da mercadoria (R$)' onChange={(e) => setPricing(String(e.target.value))} />
+                    <input value={pricing} className='inputs' placeholder='Preço da mercadoria (R$)' onChange={(e) => setPricing(mask(e.target.value, ['9,999', '99,999', '999,999', '9999,99']))} />
                 </div>
                 <div className='inputreal2'>
                     <div className="viewLabel2">
                         <label className='labelss'>{!isMobile ? 'cm' : 'Comprimento(cm)'}</label>
-                        <input type='number' value={comprimento} placeholder='Comprimento (cm)' onChange={(e) => setComprimento(e.target.value)} className='inputs' />
+                        <input value={comprimento} placeholder='Comprimento (cm)' onChange={(e) => setComprimento(mask(e.target.value, ['9,999', '99,999', '99,999', '999,99']))} className='inputs' />
                     </div>
                     <div className="viewLabel2">
                         <label className='labelss'>{!isMobile ? 'cm' : 'Altura(cm)'}</label>
-                        <input type='number' value={altura} placeholder='Altura (cm)' onChange={(e) => setAltura(e.target.value)} className='inputs' />
+                        <input value={altura} placeholder='Altura (cm)' onChange={(e) => setAltura(mask(e.target.value, ['9,999', '99,999', '99,999', '999,99']))} className='inputs' />
                     </div>
                 </div>
 
                 <div className='inputreal2'>
                     <div className="viewLabel2">
                         <label className='labelss' >{!isMobile ? 'cm' : 'Largura(cm)'}</label>
-
-                        <input type='number' value={largura} onChange={(e) => setLargura(e.target.value)} className='inputs' placeholder='Largura (cm)' />
+                        <input value={largura} onChange={(e) => setLargura(mask(e.target.value, ['9,999', '99,999', '99,999', '999,99']))} className='inputs' placeholder='Largura (cm)' />
 
                     </div>
                     <div className="viewLabel2">
                         <label className='labelss' >{!isMobile ? 'kg' : 'Peso (kg)'}</label>
-                        <input type='number' value={peso} placeholder='Peso (kg)' onChange={(e) => setPeso(e.target.value)} className='inputs' />
+                        <input value={peso} placeholder='Peso (kg)' onChange={(e) => setPeso(mask(e.target.value, ['9,999', '99,999']))} className='inputs' />
                         {/* <input type='number' value={peso}  className='inputpreco' placeholder='Peso' /> */}
                         {/* <Input className='inputpreco' placeholder='Peso' onChange={handleChangePeso} /> */}
                     </div>

@@ -27,6 +27,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-toast-notifications": "^2.4.0",
+    "remask": "0.1.0-alpha.5",
     "semantic-ui-react": "^1.2.1",
     "typescript": "~3.7.2"
   },
