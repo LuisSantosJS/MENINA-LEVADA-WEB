@@ -31,6 +31,12 @@ const ViewBashboard: React.FC = () => {
   const [isRenderEdit, setIsRenderEdit] = useState<boolean>(false);
 
   const handleSaveConfig = () => {
+    if((String(config.origin).length === 0) || (String(config.addition_days).length === 0) ||  (String(config.addition_price).length === 0)){
+      return addToast('Preencha todos os campos!', {
+        appearance: 'error',
+        autoDismiss: true,
+      });
+    }
     api.post('/config/update', {
       origin: config.origin,
       addition_price: String(config.addition_price).replace(',', '.'),
@@ -128,7 +134,7 @@ const ViewBashboard: React.FC = () => {
             <span onClick={handleSaveConfig} defaultValue={'Salvar'} >{`Salvar`}</span>
 
           </> :
-          <div className="form-view-bash">
+          <div className={results.length === 0 ?"form-view" : "form-view-bash"}>
             <div className="view-rast">
               <img src={Logo2} width='80%' height='50%' alt="Menina Levada" />
               <input value={code} onChange={(e) => setCode(e.target.value)} placeholder='insira o código de rastreio' className='inputr' type="text" />

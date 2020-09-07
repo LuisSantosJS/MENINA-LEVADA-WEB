@@ -119,8 +119,7 @@ label{
     display: flex;
     flex-direction: row;
     width: 80%;
-    background-color: #E5E5E5;
-    justify-content: space-evenly;
+    justify-content:  space-between;
     justify-items: center;
     align-items: center;
 }
@@ -148,7 +147,6 @@ label{
 }
 .inputs{
 
-    width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -316,6 +314,7 @@ select {
 @media screen and (max-width: 520px)  {
     .inputdecima{
         flex-wrap: wrap;
+        width: 97.5%;
         flex-direction: column;
     }
     .inputreal{
@@ -324,10 +323,9 @@ select {
 
     }
     .inputreal2{
-        display: flex;
         flex-wrap: wrap;
-        flex-direction: column;
-        width: 85%;
+        flex-direction: row;
+
 
     }
     .viewLabel{
@@ -379,7 +377,7 @@ select {
     }
     .form-view{
 
-        min-height: 120vh;
+        min-height: 80vh;
     }
     .viewResult{
         width: 73.5%;
@@ -393,7 +391,7 @@ select {
 .inputreal2{
     display: flex;
     flex-direction: row;
-    justify-content:space-between ;
+    justify-content:space-between;
     justify-items: center;
     align-items: center;
 }

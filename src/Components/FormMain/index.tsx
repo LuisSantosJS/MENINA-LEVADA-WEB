@@ -30,6 +30,15 @@ const FormMain: React.FC = () => {
         },
         {
             cod: '04510'
+        },
+        {
+            cod: '04065'
+        },
+        {
+            cod:'04707'
+        },
+        {
+            cod:'40290'
         }
     ];
 
@@ -46,6 +55,15 @@ const FormMain: React.FC = () => {
         }
         if (cod === '04510') {
             return 'PAC à vista'
+        }
+        if(cod ===  '04065'){
+            return 'SEDEX à vista pagamento na entrega'
+        }
+        if(cod === '04707'){
+            return 'PAC à vista pagamento na entrega'
+        }
+        if(cod === '40290'){
+            return 'SEDEX Hoje Varejo'
         }
     }
 
@@ -70,10 +88,11 @@ const FormMain: React.FC = () => {
                     });
                 } else {
                     if (String(res.data.Erro) !== String(0)) {
-                        return addToast(`Ocorreu um erro! code:${res.data.Erro}`, {
-                            appearance: 'error',
-                            autoDismiss: true,
-                        });
+                        return;
+                        // return addToast(`Ocorreu um erro! code:${res.data.Erro}`, {
+                        //     appearance: 'error',
+                        //     autoDismiss: true,
+                        // });
                     } else {
                         const RESU = {
                             pricing: res.data.Valor,
@@ -111,28 +130,31 @@ const FormMain: React.FC = () => {
                     <input value={pricing} className='inputs' placeholder='Preço da mercadoria (R$)' onChange={(e) => setPricing(mask(e.target.value, ['9,999', '99,999', '999,999', '9999,99']))} />
                 </div>
                 <div className='inputreal2'>
-                    <div className="viewLabel2">
-                        <label className='labelss'>{!isMobile ? 'cm' : 'Comprimento(cm)'}</label>
+                    {/* <div className="viewLabel2"> */}
+                    
+                        {/* <label className='labelss'>{!isMobile ? 'cm' : 'Comprimento(cm)'}</label> */}
                         <input value={comprimento} placeholder='Comprimento (cm)' onChange={(e) => setComprimento(mask(e.target.value, ['9,999', '99,999', '99,999', '999,99']))} className='inputs' />
-                    </div>
-                    <div className="viewLabel2">
-                        <label className='labelss'>{!isMobile ? 'cm' : 'Altura(cm)'}</label>
+                    {/* </div> */}
+                    <div className="viewTruck"></div>
+                    {/* <div className="viewLabel2"> */}
+                        {/* <label className='labelss'>{!isMobile ? 'cm' : 'Altura(cm)'}</label> */}
                         <input value={altura} placeholder='Altura (cm)' onChange={(e) => setAltura(mask(e.target.value, ['9,999', '99,999', '99,999', '999,99']))} className='inputs' />
-                    </div>
+                    {/* </div> */}
                 </div>
 
                 <div className='inputreal2'>
-                    <div className="viewLabel2">
-                        <label className='labelss' >{!isMobile ? 'cm' : 'Largura(cm)'}</label>
+                    {/* <div className="viewLabel2"> */}
+                        {/* <label className='labelss' >{!isMobile ? 'cm' : 'Largura(cm)'}</label> */}
                         <input value={largura} onChange={(e) => setLargura(mask(e.target.value, ['9,999', '99,999', '99,999', '999,99']))} className='inputs' placeholder='Largura (cm)' />
 
-                    </div>
-                    <div className="viewLabel2">
-                        <label className='labelss' >{!isMobile ? 'kg' : 'Peso (kg)'}</label>
+                    {/* </div> */}
+                    <div className="viewTruck"></div>
+                    {/* <div className="viewLabel2"> */}
+                        {/* <label className='labelss' >{!isMobile ? 'kg' : 'Peso (kg)'}</label> */}
                         <input value={peso} placeholder='Peso (kg)' onChange={(e) => setPeso(mask(e.target.value, ['9,999', '99,999']))} className='inputs' />
                         {/* <input type='number' value={peso}  className='inputpreco' placeholder='Peso' /> */}
                         {/* <Input className='inputpreco' placeholder='Peso' onChange={handleChangePeso} /> */}
-                    </div>
+                    {/* </div> */}
                 </div>
                 {results.length !== 0 &&
                     <div className="viewResult">
@@ -150,7 +172,7 @@ const FormMain: React.FC = () => {
                                         <tr key={index}>
                                             <td>{res.service}</td>
                                             <td>{res.days} dias</td>
-                                            <td>R${res.pricing}</td>
+                                            <td>R${String(res.pricing).replace('.', ',')}</td>
                                         </tr>
                                     )
                                 })}
