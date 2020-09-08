@@ -32,7 +32,7 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "start": " echo 'iniciando...' npm install -g create-react-app && npm install && echo 'finish npm install' && react-scripts start",
+    "start": "npm install &  npx react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
