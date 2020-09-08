@@ -32,7 +32,7 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "start": " npm install && react-scripts start",
+    "start": " yarn install && react-scripts build && yarn global add serve && echo 'serving' && serve ",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
