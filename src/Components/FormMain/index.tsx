@@ -157,7 +157,7 @@ const FormMain: React.FC = () => {
                     {/* </div> */}
                 </div>
                 {results.length !== 0 &&
-                    <div className="viewResult">
+                    <div className="viewResultado">
                         <table>
                             <thead>
                                 <tr>
@@ -179,7 +179,7 @@ const FormMain: React.FC = () => {
                             </tbody>
                         </table>
                     </div>
-                }
+ }
                 <span onClick={handleSubmit} defaultValue={'Calcular'} >{`Calcular`}</span>
             </div>
         </div>

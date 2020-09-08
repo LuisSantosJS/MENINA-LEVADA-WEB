@@ -10,8 +10,9 @@
     background-color:white;
     box-shadow: 10px 10px 5px  #CD853F;
     align-items: center;
-    justify-content:space-around;
-    overflow-y: scroll;
+    justify-items: center;
+    justify-content:center;
+    overflow: scroll;
 }
 
 .form-view{
@@ -53,12 +54,11 @@
     flex-direction: column;
 }
 .viewResult{
-    display: flex;
+    background-color: green;
     width: 80%;
-    height: 30%;
-    overflow-y: scroll;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    align-items: center;
+    justify-content: center;
+
 }
 .viewLabel3{
     display: flex;
@@ -167,23 +167,28 @@ label{
     border-radius: 4px;
     box-sizing: border-box;
 }
-
-
 table {
     border-collapse: collapse;
-    width: 100%;
     background-color: #e5e5e5;
+
+    display: block;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    overflow:scroll;
+
   }
   
   th, td {
     text-align: left;
-    padding: 8px;
+    /* padding: 8px; */
+    overflow-x: auto;
   }
   
   tr:nth-child(even){background-color: #f2f2f2}
   
   th {
-    background-color: #4CAF50;
+    background-color: #CD853F;
     color: white;
   }
 .viewpreco{
@@ -243,6 +248,7 @@ select {
     background-color: #f1f1f1;
   }
 
+
 .inputpreco{
     display: block;
     width: 90%;
@@ -284,6 +290,10 @@ select {
     padding: 2%;
 }
 
+.viewResult{
+    width: 80%;
+    background-color: red;
+}
 
 @media screen and (max-width: 900px) {
     .form-main{
@@ -379,10 +389,10 @@ select {
 
         min-height: 80vh;
     }
-    .viewResult{
-        width: 73.5%;
-    }
-}
+    /* .viewResult{
+        width: 78.5%;
+    }*/
+} 
 
 
 @media screen and (min-width: 520px) {
@@ -437,6 +447,11 @@ select {
 
  }
 
+
+.viewResultad{
+    width: 80%;
+    background-color: red;
+}
 }
  
     

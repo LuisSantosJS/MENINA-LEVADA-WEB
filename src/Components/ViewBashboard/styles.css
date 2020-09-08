@@ -140,7 +140,7 @@ table {
         background-color:  #A0522D;
         position: absolute;
         top: 85vh;
-        left: 90vw;
+        left: 85vw;
         box-shadow: 5px 5px 5px  #CD853F;
         align-items: center;
         justify-content:center ;
@@ -220,21 +220,24 @@ table {
 @media screen and (max-width: 800px) {
     .form-bash{
         width: 80vw;
-        height: 75vh;
+        height: 70vh;
     } 
 
 }
+
+
+
 @media screen and (max-width: 520px) {
     .form-bash{
         width: 90vw;
-        height: 100vh;
+        height: 80vh;
     } 
     .form-view-bash{
         min-height: 150vh;
     }
 .floatbutton{
         top: 85vh;
-        left: 80vw;
+        left: 75vw;
         width: 3.5rem;
         height: 3.5rem;
   }

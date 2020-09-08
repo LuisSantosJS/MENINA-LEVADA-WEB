@@ -65,6 +65,12 @@ table {
     border-collapse: collapse;
     background-color: #e5e5e5;
 
+    display: block;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    overflow:scroll;
+
   }
   
   th, td {
@@ -111,9 +117,13 @@ table {
 }
 
 .bodyview{
+
+    /* display: block; */
+    width: 100%;
+    /* -webkit-overflow-scrolling: touch;
     overflow-x: auto;
-    overflow:scroll;
-    margin: 10px;
+    overflow:scroll; */
+    
 }
 
 @media screen and (max-width: 900px) {
