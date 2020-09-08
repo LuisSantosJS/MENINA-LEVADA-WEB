@@ -16,14 +16,14 @@
     background-color: #F4A460;
     left: 0px;
     right: 0px;
-    overflow: hidden;
+    /* overflow: hidden; */
 
 }
 
 .form-view{
     display: flex;
     width: 100%;
-    min-height: 100vh;
+    height: 100%;
     flex-wrap: wrap;
     max-height: auto;
     align-items: center;
@@ -48,18 +48,16 @@
     box-shadow: 10px 10px 5px  #CD853F;
     align-items: center;
     justify-content:center ;
-
-    overflow-y: scroll;
 }
-
+/* 
 .view-rast{
     display: flex;
     width: 100%;
     flex-wrap: wrap;
-    height: 200px;
+    height: 100%;
     align-items: center;
     justify-content: space-around;
-}
+} */
 .bodyview{
     display: flex;
     width: 70vw;
@@ -80,6 +78,13 @@
     overflow-y: scroll;
 
 
+}
+.center{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content:center ;
+    justify-items: center;
 }
 
 .inputr{

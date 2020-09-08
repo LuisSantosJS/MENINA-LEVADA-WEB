@@ -1,8 +1,8 @@
 .viewForm{
+    display: flex;
     width: 100vw;
     min-height: 100vh;
-    max-height: unset;
-    display: flex;
+    max-height: auto;
     align-items: center;
     justify-items: center;
     justify-content: center;
@@ -12,8 +12,6 @@
     background-color: #F4A460;
     left: 0px;
     right: 0px;
-    overflow: hidden;
-
 }
 
 .floatbutton{

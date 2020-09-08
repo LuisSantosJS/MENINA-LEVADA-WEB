@@ -49,55 +49,56 @@ const Order: React.FC = () => {
 
     return (
         <div className='form-main'>
-            <div className={"form-view"}>
-                <div className={"view-rast"}>
-                    <img src={Logo2} width='80%' height='50%' alt="Menina Levada" />
-                    <input value={code} onChange={(e) => setCode(e.target.value)} placeholder='insira o código de rastreio' className='inputr' type="text" />
-                    <strong onClick={handleSubmitRast} className='inputrs'>Rastrear Produto</strong>
-                </div>
-                <div className="bodyview">
-                    {results.length !== 0 &&
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Status</th>
-                                    <th>Data</th>
-                                    <th>Hora</th>
-                                    <th>Local</th>
-                                </tr>
-                                <tr>
-                                    <td>{results[0].status}</td>
-                                    <td>{results[0].data}</td>
-                                    <td>{results[0].hora}</td>
-                                    <td>{results[0].local}</td>
-                                </tr>
-                                <tr>
-                                    <th>Status</th>
-                                    <th>Data</th>
-                                    <th>Origem</th>
-                                    <th>Destino</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                {results.map((res, index) => {
-                                    if (index !== 0) {
-                                        return (
-                                            <tr key={index}>
-                                                <td>{res.status}</td>
-                                                <td>{res.data}-{res.hora}</td>
-                                                <td>{res.origem}</td>
-                                                <td>{res.destino}</td>
-                                            </tr>
-                                        )
-                                    }
-                                    return null
-                                })}
-                            </tbody>
-                        </table>
-                    }
-                </div>
+            {/* <div className={results.length === 0 ? 'form-view-initial' : "form-view"}> */}
+            <div className={"view-rast"}>
+                <img src={Logo2} width='80%' height='50%' alt="Menina Levada" />
+                <input value={code} onChange={(e) => setCode(e.target.value)} placeholder='insira o código de rastreio' className='inputr' type="text" />
+                <strong onClick={handleSubmitRast} className='inputrs'>Rastrear Produto</strong>
             </div>
+            <div className='view-spacing' />
+            {results.length !== 0 &&
+                <div className="bodyview">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Data</th>
+                                <th>Hora</th>
+                                <th>Local</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{results[0].status}</td>
+                                <td>{results[0].data}</td>
+                                <td>{results[0].hora}</td>
+                                <td>{results[0].local}</td>
+                            </tr>
+                            <tr>
+                                <th>Status</th>
+                                <th>Data</th>
+                                <th>Origem</th>
+                                <th>Destino</th>
+                            </tr>
+
+                            {results.map((res, index) => {
+                                if (index !== 0) {
+                                    return (
+                                        <tr key={index}>
+                                            <td>{res.status}</td>
+                                            <td>{res.data}-{res.hora}</td>
+                                            <td>{res.origem}</td>
+                                            <td>{res.destino}</td>
+                                        </tr>
+                                    )
+                                }
+                                return null
+                            })}
+                        </tbody>
+                    </table>
+
+                </div>
+            }
         </div>
     )
 }
