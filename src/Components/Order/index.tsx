@@ -55,8 +55,8 @@ const Order: React.FC = () => {
                 <input value={code} onChange={(e) => setCode(e.target.value)} placeholder='insira o código de rastreio' className='inputr' type="text" />
                 <strong onClick={handleSubmitRast} className='inputrs'>Rastrear Produto</strong>
             </div>
+            {results.length !== 0 && <>
             <div className='view-spacing' />
-            {results.length !== 0 &&
                 <div className="bodyview">
                     <table>
                         <thead>
@@ -98,7 +98,7 @@ const Order: React.FC = () => {
                     </table>
 
                 </div>
-            }
+           </> }
         </div>
     )
 }
