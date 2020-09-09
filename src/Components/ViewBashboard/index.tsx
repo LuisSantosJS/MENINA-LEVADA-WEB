@@ -75,7 +75,7 @@ const ViewBashboard: React.FC = () => {
       name,
       produto,
     });
-    return window.open(`http://localhost:3333/download/certificado?id=${code}`, '_blank')
+    return window.open(`https://api-mlevada.herokuapp.com/download/certificado?id=${code}`, '_blank')
 
   }
 
