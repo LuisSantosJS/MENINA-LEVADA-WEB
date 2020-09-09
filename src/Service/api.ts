@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://apimlevada-com-br.umbler.net'
+    baseURL: 'https://api-mlevada.herokuapp.com'
 }); 
 
 export default api;
