@@ -74,29 +74,24 @@ const ViewBashboard: React.FC = () => {
       appearance: 'info',
       autoDismiss: true,
     });
-
-    api.post('/historic/create', {
+    await api.post('/rast/certificado', {
+      code,
+      localidade,
+      name,
+      produto,
+    })
+    addToast('Gerando PDF!', {
+      appearance: 'info',
+      autoDismiss: true,
+    });
+    await api.post('/historic/create', {
       nome_cliente: name,
       localidade: localidade,
       code,
       produto
     }).then(() => {
-      api.post('/rast/certificado', {
-        code,
-        localidade,
-        name,
-        produto,
-      }).then(() => {
-        addToast('Gerando PDF!', {
-          appearance: 'info',
-          autoDismiss: true,
-        });
-      }).catch(() => {})
-    }).catch(() => {})
-
-
-    window.open(`https://api-mlevada.herokuapp.com/download/certificado/${code}`, '_blank')
-
+      window.open(`https://api-mlevada.herokuapp.com/download/certificado/?id=${code}`, '_blank')
+    })
   }
 
   useEffect(() => {
