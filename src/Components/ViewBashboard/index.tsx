@@ -69,12 +69,11 @@ const ViewBashboard: React.FC = () => {
         autoDismiss: true,
       });
     }
-
     addToast('Aguarde um momento...', {
       appearance: 'info',
       autoDismiss: true,
     });
-    api.post('/rast/certificado', {
+    await api.post('/rast/certificado', {
       code,
       localidade,
       name,
@@ -84,14 +83,14 @@ const ViewBashboard: React.FC = () => {
         appearance: 'info',
         autoDismiss: true,
       });
-    }).catch(() => {
-      addToast('Ocorreu um erro ao gerar certificado!', {
+    }).catch((res) => {
+      addToast(`Ocorreu um erro ao gerar certificado! ${res}`, {
         appearance: 'error',
         autoDismiss: true,
       });
     })
 
-    api.post('/historic/create', {
+    await api.post('/historic/create', {
       nome_cliente: name,
       localidade: localidade,
       code,

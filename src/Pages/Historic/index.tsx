@@ -26,7 +26,7 @@ const Historic: React.FC = () => {
     }, [socket])
 
     const openCerti = (code: string) => {
-        return window.open(`https://api-mlevada.herokuapp.com/download/certificado/${code}`, '_blank')
+        return window.open(`https://api-mlevada.herokuapp.com/download/certificado?id=${code}`, '_blank')
     }
 
     const deletar = (code: string) => {
