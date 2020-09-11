@@ -7,6 +7,7 @@ import Users from './Pages/Users';
 import Bashboard from './Pages/Bashboard';
 import { useUserSaved, useUserID } from './Context/ContextMain';
 import { ToastProvider } from 'react-toast-notifications'
+import Historic from './Pages/Historic';
 
 
 function Routes() {
@@ -28,6 +29,11 @@ function Routes() {
                     <Route path="/rastrear" exact component={() => Home({
                         children: {
                             bol: false
+                        }
+                    })} />
+                    <Route path='/admin/historico' exact component={() => userSaved ? Historic({}) : Home({
+                        children: {
+                            bol: true
                         }
                     })} />
                     <Route path='/admin' exact component={userSaved ? Bashboard : Admin} />

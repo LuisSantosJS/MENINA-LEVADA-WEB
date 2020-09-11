@@ -2,7 +2,15 @@
     padding: 0;
     margin: 0;
 }
-
+.ver{
+    color: grey;
+    font-size: medium;
+    text-decoration:none;
+}
+.ver:hover{
+    color: #141414;
+    cursor: pointer;
+}
 .view{
     width: 100vw;
     height: 100vh;

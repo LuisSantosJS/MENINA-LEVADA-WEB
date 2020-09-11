@@ -27,7 +27,7 @@ const FormUsers: React.FC = () => {
 
     const { addToast } = useToasts();
 
-    const socket = io("http://localhost:8877");
+    const socket = io("https://api-mlevada.herokuapp.com");
     useEffect(() => {
         api.get('/admin').then(response => {
             setUsers(response.data.res);

@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    margin: 0px;
+    bottom: 0px;
+    padding: 0px;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+.excluir{
+  color: red;
+}
+.excluir:hover{
+    color: brown;
+}

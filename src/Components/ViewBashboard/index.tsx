@@ -69,17 +69,31 @@ const ViewBashboard: React.FC = () => {
         autoDismiss: true,
       });
     }
+
+    addToast('Aguarde um momento...', {
+      appearance: 'info',
+      autoDismiss: true,
+    });
+
+      await api.post('/historic/create', {
+        nome_cliente: name,
+        localidade: localidade,
+        code,
+        produto
+      })
+      await api.post('/rast/certificado', {
+        code,
+        localidade,
+        name,
+        produto,
+      });
+
     addToast('Gerando PDF!', {
       appearance: 'info',
       autoDismiss: true,
     });
-    await api.post('/rast/certificado', {
-      code,
-      localidade,
-      name,
-      produto,
-    });
-    return window.open(`https://api-mlevada.herokuapp.com/download/certificado${code}`, '_blank')
+
+   window.open(`https://api-mlevada.herokuapp.com/download/certificado/${code}`, '_blank')
 
   }
 
@@ -119,10 +133,11 @@ const ViewBashboard: React.FC = () => {
             <input value={localidade} onChange={(e) => setLocalidade(e.target.value)} placeholder='insira a localidade do cliente' className='inputr' type="text" />
             <input value={produto} onChange={(e) => setProduto(e.target.value)} placeholder='insira o nome produto' className='inputr' type="text" />
             <strong onClick={handleCert} className='inputrs'>Gerar Certificado</strong>
+            <Link  to='/admin/historico' className='ver'>Ver histórico de certificados</Link>
           </div>}
       </div>
 
-      {userID === 1 && <Link  to='/admin/users' className="floatbutton2">
+      {userID === 1 && <Link to='/admin/users' className="floatbutton2">
         <img src={People} width='40%' height='40%' alt="Usuários" />
       </Link>}
       <div onClick={() => setIsRenderEdit(!isRenderEdit)} className="floatbutton">

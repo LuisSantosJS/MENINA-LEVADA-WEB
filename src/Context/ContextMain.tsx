@@ -35,7 +35,7 @@ const Provider: React.FC = ({ children }) => {
     const [userSaved, setUserSaved] = useState<boolean>(false);
     const [isVisibleParms, setIsVisibleParms] = useState<boolean>(false);
     const [userID, setUserID] = useState<number>(0);
-    const socket = io("http://localhost:8877");
+    const socket = io("https://api-mlevada.herokuapp.com");
 
     useEffect(() => {
         const isSaved = localStorage.getItem('@userSaved');
