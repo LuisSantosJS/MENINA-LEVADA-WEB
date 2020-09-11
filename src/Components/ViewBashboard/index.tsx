@@ -96,7 +96,7 @@ const ViewBashboard: React.FC = () => {
       code,
       produto
     }).then(() => {
-      window.open(`https://api-mlevada.herokuapp.com/download/certificado/?id=${code}`, '_blank')
+      window.open(`https://api-mlevada.herokuapp.com/download/certificado?id=${code}`, '_blank')
     }).catch(() => {
       addToast('Ocorreu um erro ao gerar certificado!', {
         appearance: 'error',
