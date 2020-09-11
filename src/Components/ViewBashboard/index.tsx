@@ -74,23 +74,35 @@ const ViewBashboard: React.FC = () => {
       appearance: 'info',
       autoDismiss: true,
     });
-    await api.post('/rast/certificado', {
+    api.post('/rast/certificado', {
       code,
       localidade,
       name,
       produto,
+    }).then(() => {
+      addToast('Gerando PDF!', {
+        appearance: 'info',
+        autoDismiss: true,
+      });
+    }).catch(() => {
+      addToast('Ocorreu um erro ao gerar certificado!', {
+        appearance: 'error',
+        autoDismiss: true,
+      });
     })
-    addToast('Gerando PDF!', {
-      appearance: 'info',
-      autoDismiss: true,
-    });
-    await api.post('/historic/create', {
+
+    api.post('/historic/create', {
       nome_cliente: name,
       localidade: localidade,
       code,
       produto
     }).then(() => {
       window.open(`https://api-mlevada.herokuapp.com/download/certificado/?id=${code}`, '_blank')
+    }).catch(() => {
+      addToast('Ocorreu um erro ao gerar certificado!', {
+        appearance: 'error',
+        autoDismiss: true,
+      });
     })
   }
 
