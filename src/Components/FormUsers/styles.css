@@ -26,7 +26,7 @@
     height: 50%; /* Height in proportion to its parent container */
     margin: auto; /* Auto margin according to the element width */
     padding: 40px;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     border: 1px solid black;
     align-items: center;
     flex-direction: column;
