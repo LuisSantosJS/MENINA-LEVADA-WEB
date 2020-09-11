@@ -75,25 +75,27 @@ const ViewBashboard: React.FC = () => {
       autoDismiss: true,
     });
 
-      await api.post('/historic/create', {
-        nome_cliente: name,
-        localidade: localidade,
-        code,
-        produto
-      })
-      await api.post('/rast/certificado', {
+    api.post('/historic/create', {
+      nome_cliente: name,
+      localidade: localidade,
+      code,
+      produto
+    }).then(() => {
+      api.post('/rast/certificado', {
         code,
         localidade,
         name,
         produto,
-      });
+      }).then(() => {
+        addToast('Gerando PDF!', {
+          appearance: 'info',
+          autoDismiss: true,
+        });
+      }).catch(() => {})
+    }).catch(() => {})
 
-    addToast('Gerando PDF!', {
-      appearance: 'info',
-      autoDismiss: true,
-    });
 
-   window.open(`https://api-mlevada.herokuapp.com/download/certificado/${code}`, '_blank')
+    window.open(`https://api-mlevada.herokuapp.com/download/certificado/${code}`, '_blank')
 
   }
 
@@ -133,7 +135,7 @@ const ViewBashboard: React.FC = () => {
             <input value={localidade} onChange={(e) => setLocalidade(e.target.value)} placeholder='insira a localidade do cliente' className='inputr' type="text" />
             <input value={produto} onChange={(e) => setProduto(e.target.value)} placeholder='insira o nome produto' className='inputr' type="text" />
             <strong onClick={handleCert} className='inputrs'>Gerar Certificado</strong>
-            <Link  to='/admin/historico' className='ver'>Ver histórico de certificados</Link>
+            <Link to='/admin/historico' className='ver'>Ver histórico de certificados</Link>
           </div>}
       </div>
 
