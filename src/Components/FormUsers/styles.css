@@ -15,7 +15,7 @@
     top: 0;
     left: 0;
     overflow: auto; /* Enable scroll if needed */
-    padding-top: 80px; /* Location of the content container */
+    padding-top: 60px; /* Location of the content container */
 }
 /* Modal content */
 .modal-content {
@@ -25,7 +25,7 @@
     max-width: 640px; /* Max width where it stops expanding */
     height: 50%; /* Height in proportion to its parent container */
     margin: auto; /* Auto margin according to the element width */
-    padding: 40px;
+    padding: 10px;
     /* flex-wrap: wrap; */
     border: 1px solid black;
     align-items: center;
