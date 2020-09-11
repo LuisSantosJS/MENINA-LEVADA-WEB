@@ -61,10 +61,10 @@ const Order: React.FC = () => {
                     <table>
                         <thead>
                             <tr>
-                                <th>Status</th>
-                                <th>Data</th>
-                                <th>Hora</th>
-                                <th>Local</th>
+                                <th className='primary' >Status</th>
+                                <th className='primary'>Data</th>
+                                <th className='primary'>Hora</th>
+                                <th className='primary'>Local</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -75,10 +75,10 @@ const Order: React.FC = () => {
                                 <td>{results[0].local}</td>
                             </tr>
                             <tr>
-                                <th>Status</th>
-                                <th>Data</th>
-                                <th>Origem</th>
-                                <th>Destino</th>
+                                <th className='primary'>Status</th>
+                                <th className='primary'>Data</th>
+                                <th className='primary'>Origem</th>
+                                <th className='primary'>Destino</th>
                             </tr>
 
                             {results.map((res, index) => {

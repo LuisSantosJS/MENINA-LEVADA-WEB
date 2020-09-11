@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../../Components/Header';
-import api from '../../Service/api';
+import api, { APIURL } from '../../Service/api';
 import io from "socket.io-client";
 import './styles.css'
 interface ITEM {
@@ -12,7 +12,7 @@ interface ITEM {
 }
 const Historic: React.FC = () => {
     const [hist, setHist] = useState<ITEM[]>([]);
-    const socket = io("https://api-mlevada.herokuapp.com");
+    const socket = io(APIURL);
     useEffect(() => {
         api.get('/historic/index').then(res => {
             setHist(res.data.res);
@@ -26,7 +26,7 @@ const Historic: React.FC = () => {
     }, [socket])
 
     const openCerti = (code: string) => {
-        return window.open(`https://api-mlevada.herokuapp.com/download/certificado?id=${code}`, '_blank')
+        return window.open(`${APIURL}/download/certificado?id=${code}`, '_blank')
     }
 
     const deletar = (code: string) => {

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './styles.css';
+import '../../Global.css'
 import api from '../../Service/api';
 import Logo2 from '../../Assets/logo2.png';
 import { useToasts } from 'react-toast-notifications';

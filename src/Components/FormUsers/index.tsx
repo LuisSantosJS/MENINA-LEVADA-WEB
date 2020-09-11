@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import api from '../../Service/api';
+import api,{ APIURL} from '../../Service/api';
 import io from "socket.io-client";
+
 import Add from '../../Assets/more.png';
 import { useToasts } from 'react-toast-notifications';
 import * as EmailValidator from 'email-validator';
@@ -27,7 +28,7 @@ const FormUsers: React.FC = () => {
 
     const { addToast } = useToasts();
 
-    const socket = io("https://api-mlevada.herokuapp.com");
+    const socket = io(APIURL);
     useEffect(() => {
         api.get('/admin').then(response => {
             setUsers(response.data.res);
@@ -139,7 +140,7 @@ const FormUsers: React.FC = () => {
     }
 
     return (
-        <div className="view">
+        <div className="view secundary">
             <div className='form-bash'>
                 {users.length <= 1 ?
                     <div>Não há usuários para gerenciar</div> :
@@ -147,8 +148,8 @@ const FormUsers: React.FC = () => {
                     <table>
                         <thead>
                             <tr>
-                                <th>User Email</th>
-                                <th>Status</th>
+                                <th className='primary'>User Email</th>
+                                <th className='primary'>Status</th>
                             </tr>
                         </thead>
                         <tbody>

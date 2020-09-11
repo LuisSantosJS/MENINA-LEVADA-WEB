@@ -15,7 +15,7 @@
     top: 0;
     left: 0;
     overflow: auto; /* Enable scroll if needed */
-    padding-top: 40px; /* Location of the content container */
+    padding-top: 30px; /* Location of the content container */
 }
 /* Modal content */
 .modal-content {
@@ -58,7 +58,7 @@
     margin: 0px;
     padding: 0px;
     bottom: 0px;
-    background-color: #F4A460;
+    background-color: var(--secundary);
     left: 0px;
     right: 0px;
     /* overflow: hidden; */
@@ -87,7 +87,7 @@
     max-width: 700px;
     padding: 30px;
     background-color:white;
-    box-shadow: 10px 10px 5px  #CD853F;
+    box-shadow: 10px 10px 5px  var(--primary);
     justify-content:space-around ;
     overflow: scroll;
 }

@@ -1,5 +1,5 @@
-nav{
-    background-color: #A0522D;
+.navbar{
+    background: var(--zero);
     display: flex;
     left: 0px;
     right: 0px;

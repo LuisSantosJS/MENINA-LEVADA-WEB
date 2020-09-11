@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from '../../Assets/logo.png'
 import Salir from '../../Assets/salir.png'
+import '../../Global.css'
 import { useUserSaved, useUserID } from '../../Context/ContextMain';
 import { useToasts } from 'react-toast-notifications'
 import './styles.css'

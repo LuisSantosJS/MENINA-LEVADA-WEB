@@ -1,35 +1,4 @@
-/* .form-main{
-    width: 60vw;
-    height: 30vw;
-    max-width: 700px;
-    background-color:white;
-    box-shadow: 10px 10px 5px  #CD853F;
-}
 
-
-
-@media screen and (max-width: 900px) {
-    .form-main{
-        width: 80vw;
-        height:  70vh;
-    }
-}
-
-  @media screen and (max-width: 1100px) {
-    .form-main{
-        width: 70vw;
-        height:  60vh;
-    }
-}
-
-@media screen and (max-width: 1300px) {
-    .form-main{
-        width: 90vw;
-        height:  75vh;
-    }
-}
-
- */
 
  .form-admin{
     display: flex;
@@ -42,7 +11,7 @@
     height:  50vh;
     max-width:  90vw;
     background-color:white;
-    box-shadow: 10px 10px 5px  #CD853F;
+    box-shadow: 10px 10px 5px  var(--primary);
  }
  form{
     display: flex;
@@ -121,34 +90,3 @@ input[type=password], select {
       
 }
 
-/* 
-.inputreal2{
-    display: flex;
-    flex-direction: row;
-    width: 72vw;
-    justify-content:space-between ;
-    justify-items: center;
-    align-items: center;
-}
-
-.viewLabel2{
-    display: flex;
-    width: 45%;
-    padding: none;
-    flex-direction: row;
-}
-.iconpreco{
-    display:flex;
-    justify-items: center;
-    align-items: center;
-    text-align: center;
-    padding: 0.8rem;
-    justify-content: center;
-    height: 100%;
-    width: 11%;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    color: #808080
-} */

@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import api from '../Service/api';
+import api,{APIURL} from '../Service/api';
 import io from "socket.io-client";
 
 type ContextType = {
@@ -35,7 +35,7 @@ const Provider: React.FC = ({ children }) => {
     const [userSaved, setUserSaved] = useState<boolean>(false);
     const [isVisibleParms, setIsVisibleParms] = useState<boolean>(false);
     const [userID, setUserID] = useState<number>(0);
-    const socket = io("https://api-mlevada.herokuapp.com");
+    const socket = io(APIURL);
 
     useEffect(() => {
         const isSaved = localStorage.getItem('@userSaved');

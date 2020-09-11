@@ -138,7 +138,7 @@ table {
   tr:nth-child(even){background-color: #f2f2f2}
   
   th {
-    background-color: #CD853F;
+    background-color: var(--primary);
     color: white;
   }
 
@@ -147,17 +147,17 @@ table {
         width: 4rem;
         height: 4rem;
         border-radius:100%;
-        background-color:  #A0522D;
+        background-color:  var(--zero);
         position: absolute;
         top: 85vh;
         left: 85vw;
-        box-shadow: 5px 5px 5px  #CD853F;
+        box-shadow: 5px 5px 5px var(--primary);
         align-items: center;
         justify-content:center ;
   }
 
   .floatbutton:hover{
-    background-color:  #CD853F;
+    background-color:  var(--primary);
   }
 
   .floatbutton2{
@@ -165,17 +165,17 @@ table {
      width: 4rem;
      height: 4rem;
      border-radius:100%;
-     background-color:  #A0522D;
+     background-color:  var(--zero);
      position: absolute;
      top: 70vh;
      left: 85vw;
-     box-shadow: 5px 5px 5px  #CD853F;
+     box-shadow: 5px 5px 5px  var(--primary);
      align-items: center;
      justify-content:center ;
 }
 
 .floatbutton2:hover{
- background-color:  #CD853F;
+ background-color:  var(--primary);
 }
 
 
@@ -271,7 +271,7 @@ table {
 
 @media screen and (max-width: 450px) {
     .floatbutton2{
-        top:75vh;
+        top: 75vh;
     }
 
 }

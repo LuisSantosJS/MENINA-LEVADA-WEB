@@ -9,7 +9,7 @@
     margin: 0px;
     padding: 0px;
     bottom: 0px;
-    background-color: #F4A460;
+    background-color: var(--secundary);
     left: 0px;
     right: 0px;
 }
@@ -19,15 +19,15 @@
      width: 4rem;
      height: 4rem;
      border-radius:100%;
-     background-color:  #A0522D;
+     background-color:  var(--zero);
      position: absolute;
      top: 85vh;
      left: 90vw;
-     box-shadow: 5px 5px 5px  #CD853F;
+     box-shadow: 5px 5px 5px  var(--primary);
      align-items: center;
      justify-content:center ;
 }
 
 .floatbutton:hover{
- background-color:  #CD853F;
+ background-color:   var(--primary);
 }

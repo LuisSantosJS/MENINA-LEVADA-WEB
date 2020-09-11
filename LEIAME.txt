@@ -1,0 +1,7 @@
+para alterar as cores mexa no arquivo "Global.css" dentro da pasta src
+
+para alterar a URL do back-end mexer no arquivo 'api.ts' dentro da pasta src/Service
+
+para alterar a logo mexer nas imagens na pasta src/Assets
+
+para mexer nos icones(favicon) mexer na pasta public e no arquivo index.html dentro da pasta public

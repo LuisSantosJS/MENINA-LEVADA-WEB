@@ -1,9 +1,10 @@
 import React from 'react';
 import './styles.css'
+import '../../Global.css'
 import FormAdmin from '../FormAdmin'
 const FormViewAdmin: React.FC = () => {
     return (
-        <div className='viewForm'>
+        <div className={'viewForm'}>
          <FormAdmin/>
         </div>
     )
