@@ -15,3 +15,23 @@
 .excluir:hover{
     color: brown;
 }
+
+
+.textHisto{
+  color: #141414;
+  font-size:1.2rem;
+}
+
+.form-bash{
+  display: flex;
+  width: 70vw;
+  padding-top: 20px;
+  flex-wrap: wrap;
+  height: 75vh;
+  max-width: 700px;
+  padding: 30px;
+  background-color:white;
+  box-shadow: 10px 10px 5px  var(--primary);
+  justify-content:space-around ;
+  overflow: scroll;
+}

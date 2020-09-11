@@ -7,6 +7,7 @@ interface ITEM {
     id: number,
     nome_cliente: string,
     localidade: string,
+    date: string,
     code: string,
     produto: string
 }
@@ -39,6 +40,7 @@ const Historic: React.FC = () => {
             <Header />
             <div className="view">
                 <div className='form-bash'>
+                    <div className='textHisto'>Histórico de certificados</div>
                     {hist.length <= 0 ?
                         <div>Não há histórico para gerenciar</div> :
 
@@ -46,6 +48,7 @@ const Historic: React.FC = () => {
                             <thead>
                                 <tr>
                                     <th>Nome Cliente</th>
+                                    <th>Data</th>
                                     <th>Localidade</th>
                                     <th>Produto</th>
                                     <th>Código</th>
@@ -57,6 +60,7 @@ const Historic: React.FC = () => {
                                     return (
                                         <tr key={index} >
                                             <td onClick={() => openCerti(res.code)} >{res.nome_cliente}</td>
+                                            <td onClick={() => openCerti(res.code)} >{res.date}</td>
                                             <td onClick={() => openCerti(res.code)} >{res.localidade}</td>
                                             <td onClick={() => openCerti(res.code)}>{res.produto}</td>
                                             <td onClick={() => openCerti(res.code)}>{res.code}</td>

@@ -91,6 +91,10 @@
     justify-content:space-around ;
     overflow: scroll;
 }
+.textHisto{
+    color: #141414;
+    font-size:1.2rem;
+  }
 
 .bodyview{
     display: flex;

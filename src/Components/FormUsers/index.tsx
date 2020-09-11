@@ -142,6 +142,7 @@ const FormUsers: React.FC = () => {
     return (
         <div className="view secundary">
             <div className='form-bash'>
+                <div className='textHisto'>Lista de Usuários</div>
                 {users.length <= 1 ?
                     <div>Não há usuários para gerenciar</div> :
 

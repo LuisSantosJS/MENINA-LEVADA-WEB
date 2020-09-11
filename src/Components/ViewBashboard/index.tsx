@@ -3,7 +3,7 @@ import './styles.css';
 import Logo2 from '../../Assets/logo2.png';
 import { Link } from 'react-router-dom';
 import Edit from '../../Assets/edit.png';
-import api from '../../Service/api';
+import api,{APIURL} from '../../Service/api';
 import People from '../../Assets/people.png'
 import { useConfig, } from '../../Context/ContextConfig';
 import { useUserID } from '../../Context/ContextMain';
@@ -96,7 +96,7 @@ const ViewBashboard: React.FC = () => {
       code,
       produto
     }).then(() => {
-      window.open(`https://api-mlevada.herokuapp.com/download/certificado?id=${code}`, '_blank')
+      window.open(`${APIURL}/download/certificado?id=${code}`, '_blank')
     }).catch(() => {
       addToast('Ocorreu um erro ao gerar certificado!', {
         appearance: 'error',
