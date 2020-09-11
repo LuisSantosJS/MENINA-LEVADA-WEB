@@ -150,7 +150,9 @@ const ViewBashboard: React.FC = () => {
       </Link>}
       <div onClick={() => setIsRenderEdit(!isRenderEdit)} className="floatbutton">
         <img src={Edit} width='40%' height='40%' alt="Editar Configurações" />
+
       </div>
+
     </div>
 
   );

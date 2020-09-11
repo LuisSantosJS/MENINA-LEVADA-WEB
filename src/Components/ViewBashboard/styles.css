@@ -28,6 +28,8 @@
 
 }
 
+
+
 .form-view{
     display: flex;
     width: 100%;
@@ -237,6 +239,9 @@ table {
 
 
 
+
+
+
 @media screen and (max-width: 520px) {
     .form-bash{
         width: 90vw;
@@ -264,9 +269,21 @@ table {
   
 }
 
+@media screen and (max-width: 450px) {
+    .floatbutton2{
+        top:75vh;
+    }
+
+}
+
 
 @media screen and (max-width: 300px) {
     .form-view-bash{
         min-height: 200vh;
     }
+    .floatbutton2{
+        top: 70vh;
+  
+    }
 }
+
