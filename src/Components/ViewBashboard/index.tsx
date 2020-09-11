@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './styles.css';
 import Logo2 from '../../Assets/logo2.png';
+import { Link } from 'react-router-dom';
 import Edit from '../../Assets/edit.png';
 import api from '../../Service/api';
-import { useConfig } from '../../Context/ContextConfig';
+import People from '../../Assets/people.png'
+import { useConfig, } from '../../Context/ContextConfig';
+import { useUserID } from '../../Context/ContextMain';
 import { isMobile } from 'react-device-detect';
 // @ts-ignore
 import { mask } from 'remask';
@@ -20,6 +23,7 @@ interface ITEM {
 }
 const ViewBashboard: React.FC = () => {
   const { addToast } = useToasts();
+  const { userID } = useUserID();
   const { config, setConfig } = useConfig();
   const [code, setCode] = useState<string>('');
   const [localidade, setLocalidade] = useState<string>('');
@@ -75,7 +79,7 @@ const ViewBashboard: React.FC = () => {
       name,
       produto,
     });
-    return window.open(`https://api-mlevada.herokuapp.com/download/certificado?id=${code}`, '_blank')
+    return window.open(`https://api-mlevada.herokuapp.com/download/certificado${code}`, '_blank')
 
   }
 
@@ -108,19 +112,23 @@ const ViewBashboard: React.FC = () => {
             <span onClick={handleSaveConfig} defaultValue={'Salvar'} >{`Salvar`}</span>
 
           </> :
-            <div className='center'>
+          <div className='center'>
             <img src={Logo2} width='70%' height='40%' alt="Menina Levada" />
-              <input value={code} onChange={(e) => setCode(e.target.value)} placeholder='insira o código de rastreio' className='inputr' type="text" />
-              <input value={name} onChange={(e) => setName(e.target.value)} placeholder='insira o nome do cliente' className='inputr' type="text" />
-              <input value={localidade} onChange={(e) => setLocalidade(e.target.value)} placeholder='insira a localidade do cliente' className='inputr' type="text" />
-              <input value={produto} onChange={(e) => setProduto(e.target.value)} placeholder='insira o nome produto' className='inputr' type="text" />
-              <strong onClick={handleCert} className='inputrs'>Gerar Certificado</strong>
-            </div>}
+            <input value={code} onChange={(e) => setCode(e.target.value)} placeholder='insira o código de rastreio' className='inputr' type="text" />
+            <input value={name} onChange={(e) => setName(e.target.value)} placeholder='insira o nome do cliente' className='inputr' type="text" />
+            <input value={localidade} onChange={(e) => setLocalidade(e.target.value)} placeholder='insira a localidade do cliente' className='inputr' type="text" />
+            <input value={produto} onChange={(e) => setProduto(e.target.value)} placeholder='insira o nome produto' className='inputr' type="text" />
+            <strong onClick={handleCert} className='inputrs'>Gerar Certificado</strong>
+          </div>}
       </div>
-          <div onClick={() => setIsRenderEdit(!isRenderEdit)} className="floatbutton">
-            <img src={Edit} width='40%' height='40%' alt="Editar Configurações" />
-          </div>
+
+      {userID === 1 && <Link  to='/admin/users' className="floatbutton2">
+        <img src={People} width='40%' height='40%' alt="Usuários" />
+      </Link>}
+      <div onClick={() => setIsRenderEdit(!isRenderEdit)} className="floatbutton">
+        <img src={Edit} width='40%' height='40%' alt="Editar Configurações" />
       </div>
+    </div>
 
   );
 }

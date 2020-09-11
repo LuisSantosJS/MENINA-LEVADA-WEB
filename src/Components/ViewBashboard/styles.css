@@ -41,7 +41,7 @@
     width: 70vw;
     padding-top: 20px;
     flex-wrap: wrap;
-    height: 70vh;
+    height: 75vh;
     max-width: 700px;
     padding: 30px;
     background-color:white;
@@ -150,23 +150,25 @@ table {
     background-color:  #CD853F;
   }
 
-  .floatbutton-certi{
+  .floatbutton2{
     display: flex;
-    width: 4rem;
-    height: 4rem;
-    border-radius:100%;
-    background-color:  #4CAF50;
-    position: absolute;
-    top: 70vh;
-    left: 90vw;
-    box-shadow: 5px 5px 5px  #CD853F;
-    align-items: center;
-    justify-content:center ;
-  }
+     width: 4rem;
+     height: 4rem;
+     border-radius:100%;
+     background-color:  #A0522D;
+     position: absolute;
+     top: 70vh;
+     left: 85vw;
+     box-shadow: 5px 5px 5px  #CD853F;
+     align-items: center;
+     justify-content:center ;
+}
 
-  .floatbutton-certi:hover{
-    background-color:   #45a049;
-  }
+.floatbutton2:hover{
+ background-color:  #CD853F;
+}
+
+
 
   .viewLabel2{
     display: flex;
@@ -220,7 +222,7 @@ table {
 @media screen and (max-width: 800px) {
     .form-bash{
         width: 80vw;
-        height: 70vh;
+        height: 80vh;
     } 
 
 }
@@ -241,22 +243,17 @@ table {
         width: 3.5rem;
         height: 3.5rem;
   }
+  .floatbutton2{
+    top: 70vh;
+    left: 75vw;
+    width: 3.5rem;
+    height: 3.5rem;
+}
   .view-rast{
       height: 140px;
 
   }
   
-  .floatbutton-certi{
-    top: 70vh;
-    left: 80vw;
-    width: 3.5rem;
-    height: 3.5rem;
-}
-
-.floatbutton-certi{
-
-    top: 75vh;
-  }
 }
 
 

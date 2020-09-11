@@ -3,13 +3,14 @@ import './styles.css';
 import api from '../../Service/api';
 import Logo2 from '../../Assets/logo2.png';
 import { useToasts } from 'react-toast-notifications';
-import { useUserSaved } from '../../Context/ContextMain';
+import { useUserSaved, useUserID } from '../../Context/ContextMain';
 import * as EmailValidator from 'email-validator';
 const FormAdmin: React.FC = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const { addToast } = useToasts();
     const { setUserSaved } = useUserSaved();
+    const { setUserID } = useUserID();
     const cleanInputs = () => {
         setPassword('');
         setEmail('');
@@ -38,13 +39,22 @@ const FormAdmin: React.FC = () => {
             email: String(email).toLowerCase(),
             password: password
         }).then(res => {
+            if (Boolean(res.data.data.disabled) === true) {
+                setUserSaved(false);
+                return addToast('Usuário desabilitado!', {
+                    appearance: 'error',
+                    autoDismiss: true,
+                })
+            }
             if (String(res.data.message) === 'success') {
                 addToast(String(res.data.res), {
                     appearance: 'success',
                     autoDismiss: true,
                 })
-                setUserSaved(true);
+                setUserID(Number(res.data.data.id))
                 localStorage.setItem('@userSaved', 'true');
+                localStorage.setItem('@userID', `${Number(res.data.data.id)}`);
+                setUserSaved(true);
             } else {
                 addToast(String(res.data.res), {
                     appearance: 'error',

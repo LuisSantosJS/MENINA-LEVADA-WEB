@@ -1,15 +1,17 @@
 import React from 'react';
 import Logo from '../../Assets/logo.png'
 import Salir from '../../Assets/salir.png'
-import { useUserSaved } from '../../Context/ContextMain';
+import { useUserSaved, useUserID } from '../../Context/ContextMain';
 import { useToasts } from 'react-toast-notifications'
 import './styles.css'
 const Header: React.FC = () => {
     const { userSaved, setUserSaved } = useUserSaved();
     const { addToast } = useToasts()
+    const { setUserID } = useUserID();
 
     const handleExit = () => {
-        setUserSaved(false)
+        setUserSaved(false);
+        setUserID(0);
         addToast('Successfully unlogged', {
             appearance: 'success',
             autoDismiss: true,
