@@ -154,9 +154,6 @@ label{
     border-radius: 4px;
     box-sizing: border-box;
 }
-.inputs::after{
-    content: '$';
-}
 
 .inputss{
     width: 80%;
