@@ -40,10 +40,10 @@ const Historic: React.FC = () => {
             <Header />
             <div className="view">
                 <div className='form-bash'>
-                    <div className='textHisto'>Histórico de certificados</div>
+  
                     {hist.length <= 0 ?
-                        <div>Não há histórico para gerenciar</div> :
-
+                        <div>Não há histórico para gerenciar</div> : <>
+                        <div className='textHisto'>Histórico de certificados</div>
                         <table>
                             <thead>
                                 <tr>
@@ -70,6 +70,7 @@ const Historic: React.FC = () => {
                                 })}
                             </tbody>
                         </table>
+                        </>
                     }
                 </div>
             </div>

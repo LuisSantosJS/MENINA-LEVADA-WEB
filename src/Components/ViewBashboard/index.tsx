@@ -115,8 +115,8 @@ const ViewBashboard: React.FC = () => {
   }, [addToast])
 
   return (
-    <div className="view secundary">
-      <div className='form-bash'>
+    <div className="view">
+      <div className='form-bash1'>
         {isRenderEdit ?
           <>
             <div className="viewLabel4">
@@ -145,10 +145,10 @@ const ViewBashboard: React.FC = () => {
           </div>}
       </div>
 
-      {userID === 1 && <Link to='/admin/users' className="floatbutton2 zero">
+      {userID === 1 && <Link to='/admin/users' className="floatbutton2">
         <img src={People} width='40%' height='40%' alt="Usuários" />
       </Link>}
-      <div onClick={() => setIsRenderEdit(!isRenderEdit)} className="floatbutton zero">
+      <div onClick={() => setIsRenderEdit(!isRenderEdit)} className="floatbutton">
         <img src={Edit} width='40%' height='40%' alt="Editar Configurações" />
 
       </div>

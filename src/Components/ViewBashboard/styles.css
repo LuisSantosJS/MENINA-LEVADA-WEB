@@ -21,7 +21,7 @@
     margin: 0px;
     padding: 0px;
     bottom: 0px;
-    background-color: #F4A460;
+    background-color:var(--secundary);
     left: 0px;
     right: 0px;
     /* overflow: hidden; */
@@ -46,16 +46,16 @@
 
 
 
-.form-bash{
+.form-bash1{
     display: flex;
-    width: 70vw;
+    width: 80vw;
     padding-top: 20px;
     flex-wrap: wrap;
     height: 75vh;
     max-width: 700px;
     padding: 30px;
     background-color:white;
-    box-shadow: 10px 10px 5px  #CD853F;
+    box-shadow: 10px 10px 5px  var(--primary);
     align-items: center;
     justify-content:center ;
 }
@@ -92,6 +92,7 @@
 .center{
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
     align-items: center;
     justify-content:center ;
     justify-items: center;
@@ -230,9 +231,10 @@ table {
 
 
 @media screen and (max-width: 800px) {
-    .form-bash{
+    .form-bash1{
         width: 80vw;
         height: 80vh;
+        padding: 0px;
     } 
 
 }
@@ -243,9 +245,10 @@ table {
 
 
 @media screen and (max-width: 520px) {
-    .form-bash{
+    .form-bash1{
         width: 90vw;
         height: 80vh;
+        padding: 0px;
     } 
     .form-view-bash{
         min-height: 150vh;
@@ -257,7 +260,7 @@ table {
         height: 3.5rem;
   }
   .floatbutton2{
-    top: 70vh;
+    top: 75vh;
     left: 75vw;
     width: 3.5rem;
     height: 3.5rem;
@@ -280,9 +283,10 @@ table {
 @media screen and (max-width: 300px) {
     .form-view-bash{
         min-height: 200vh;
+
     }
     .floatbutton2{
-        top: 70vh;
+        top: 75vh;
   
     }
 }

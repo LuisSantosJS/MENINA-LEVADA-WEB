@@ -140,12 +140,12 @@ const FormUsers: React.FC = () => {
     }
 
     return (
-        <div className="view secundary">
+        <div className="view">
             <div className='form-bash'>
-                <div className='textHisto'>Lista de Usuários</div>
-                {users.length <= 1 ?
-                    <div>Não há usuários para gerenciar</div> :
-
+    
+                {users.length === 0 ?
+                    <div>Não há usuários para gerenciar</div> :<>
+                    <div className='textHisto'>Lista de Usuários</div>
                     <table>
                         <thead>
                             <tr>
@@ -164,7 +164,7 @@ const FormUsers: React.FC = () => {
                                 )
                             })}
                         </tbody>
-                    </table>
+                    </table></>
                 }
             </div>
             <div onClick={() => setModal(true)} className="floatbutton">

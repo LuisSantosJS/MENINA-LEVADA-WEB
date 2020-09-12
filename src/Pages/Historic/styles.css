@@ -24,14 +24,14 @@
 
 .form-bash{
   display: flex;
-  width: 70vw;
+  width: 85vw;
   padding-top: 20px;
-  flex-wrap: wrap;
   height: 75vh;
   max-width: 700px;
-  padding: 30px;
+  padding: 20px;
   background-color:white;
   box-shadow: 10px 10px 5px  var(--primary);
-  justify-content:space-around ;
+  justify-content:center ;
+  align-items: center;
   overflow: scroll;
 }
