@@ -3,7 +3,7 @@ import './styles.css';
 import Logo2 from '../../Assets/logo2.png';
 import { Link } from 'react-router-dom';
 import Edit from '../../Assets/edit.png';
-import api,{APIURL} from '../../Service/api';
+import api, { APIURL } from '../../Service/api';
 import People from '../../Assets/people.png'
 import { useConfig, } from '../../Context/ContextConfig';
 import { useUserID } from '../../Context/ContextMain';
@@ -119,6 +119,7 @@ const ViewBashboard: React.FC = () => {
       <div className='form-bash1'>
         {isRenderEdit ?
           <>
+            <div className='textHisto'>Editar Configurações</div>
             <div className="viewLabel4">
               <label>{'Preço adicional (R$)'}</label>
               <input value={config.addition_price} onChange={e => setConfig({ ...config, addition_price: mask(e.target.value, ['9,999', '99,999', '99,999', '999,99']) })} className='inputs' />

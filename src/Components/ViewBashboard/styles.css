@@ -11,6 +11,12 @@
     color: #141414;
     cursor: pointer;
 }
+
+.textHisto{
+    color: #141414;
+    font-size:1.2rem;
+  }
+  
 .view{
     width: 100vw;
     height: 100vh;
