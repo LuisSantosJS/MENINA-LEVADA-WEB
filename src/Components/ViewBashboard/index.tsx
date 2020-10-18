@@ -96,6 +96,14 @@ const ViewBashboard: React.FC = () => {
       code,
       produto
     }).then(() => {
+      addToast(`Faça o download do certificado!`, {
+        appearance: 'success',
+        autoDismiss: false,
+      });
+      addToast(`O certificado ficará disponível por curto periodo de tempo!`, {
+        appearance: 'info',
+        autoDismiss: false,
+      });
       window.open(`${APIURL}/download/certificado?id=${code}`, '_blank')
     }).catch(() => {
       addToast('Ocorreu um erro ao gerar certificado!', {

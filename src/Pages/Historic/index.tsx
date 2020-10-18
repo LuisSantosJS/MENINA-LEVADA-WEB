@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Header from '../../Components/Header';
 import api, { APIURL } from '../../Service/api';
 import io from "socket.io-client";
-import './styles.css'
+import './styles.css';
+import { useToasts } from 'react-toast-notifications';
 interface ITEM {
     id: number,
     nome_cliente: string,
@@ -13,6 +14,7 @@ interface ITEM {
 }
 const Historic: React.FC = () => {
     const [hist, setHist] = useState<ITEM[]>([]);
+    const { addToast } = useToasts();
     const socket = io(APIURL);
     useEffect(() => {
         api.get('/historic/index').then(res => {
@@ -27,6 +29,10 @@ const Historic: React.FC = () => {
     }, [socket])
 
     const openCerti = (code: string) => {
+        addToast('O certificado pode estar indisponível!', {
+            appearance: 'info',
+            autoDismiss: false,
+          });
         return window.open(`${APIURL}/download/certificado?id=${code}`, '_blank')
     }
 
