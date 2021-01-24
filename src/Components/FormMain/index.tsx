@@ -23,6 +23,8 @@ const FormMain: React.FC = () => {
     const [largura, setLargura] = useState<string>('');
     const [altura, setAltura] = useState<string>('');
     const [peso, setPeso] = useState<string>('');
+    const [CEPORIGEM, setCEPORIGEM] =  useState<string>('');
+    const [CEPDESTINO, setCEPDESTINO] = useState<string>('');
     const [results, setResults] = useState<RESULT[]>([]);
     const SERVICES = [
         {
@@ -35,10 +37,10 @@ const FormMain: React.FC = () => {
             cod: '04065'
         },
         {
-            cod:'04707'
+            cod: '04707'
         },
         {
-            cod:'40290'
+            cod: '40290'
         }
     ];
 
@@ -56,18 +58,24 @@ const FormMain: React.FC = () => {
         if (cod === '04510') {
             return 'PAC à vista'
         }
-        if(cod ===  '04065'){
+        if (cod === '04065') {
             return 'SEDEX à vista pagamento na entrega'
         }
-        if(cod === '04707'){
+        if (cod === '04707') {
             return 'PAC à vista pagamento na entrega'
         }
-        if(cod === '40290'){
+        if (cod === '40290') {
             return 'SEDEX Hoje Varejo'
         }
     }
 
-    const handleSubmit = () => {
+    const getLocation = async (cep: number) => {
+        const A = await api.get(`/cep/${cep}`);
+        return A.data.res
+    }
+
+
+    const handleSubmit =  async() => {
         setResults([]);
         SERVICES.forEach(ser => {
             const DATA = {
@@ -105,8 +113,14 @@ const FormMain: React.FC = () => {
                 }
             })
         })
+        const ori = await getLocation(config.origin)
+        const dest = await getLocation(Number(cep))
+        setCEPDESTINO(dest);
+        setCEPORIGEM(ori)
         return console.log('result', results)
     }
+
+
 
     return (
         <div className='form-main'>
@@ -131,29 +145,29 @@ const FormMain: React.FC = () => {
                 </div>
                 <div className='inputreal2'>
                     {/* <div className="viewLabel2"> */}
-                    
-                        {/* <label className='labelss'>{!isMobile ? 'cm' : 'Comprimento(cm)'}</label> */}
-                        <input value={comprimento} placeholder='Comprimento (cm)' onChange={(e) => setComprimento(mask(e.target.value, ['9,999', '99,999', '99,999', '999,99']))} className='inputs' />
+
+                    {/* <label className='labelss'>{!isMobile ? 'cm' : 'Comprimento(cm)'}</label> */}
+                    <input value={comprimento} placeholder='Comprimento (cm)' onChange={(e) => setComprimento(mask(e.target.value, ['9,999', '99,999', '99,999', '999,99']))} className='inputs' />
                     {/* </div> */}
                     <div className="viewTruck"></div>
                     {/* <div className="viewLabel2"> */}
-                        {/* <label className='labelss'>{!isMobile ? 'cm' : 'Altura(cm)'}</label> */}
-                        <input value={altura} placeholder='Altura (cm)' onChange={(e) => setAltura(mask(e.target.value, ['9,999', '99,999', '99,999', '999,99']))} className='inputs' />
+                    {/* <label className='labelss'>{!isMobile ? 'cm' : 'Altura(cm)'}</label> */}
+                    <input value={altura} placeholder='Altura (cm)' onChange={(e) => setAltura(mask(e.target.value, ['9,999', '99,999', '99,999', '999,99']))} className='inputs' />
                     {/* </div> */}
                 </div>
 
                 <div className='inputreal2'>
                     {/* <div className="viewLabel2"> */}
-                        {/* <label className='labelss' >{!isMobile ? 'cm' : 'Largura(cm)'}</label> */}
-                        <input value={largura} onChange={(e) => setLargura(mask(e.target.value, ['9,999', '99,999', '99,999', '999,99']))} className='inputs' placeholder='Largura (cm)' />
+                    {/* <label className='labelss' >{!isMobile ? 'cm' : 'Largura(cm)'}</label> */}
+                    <input value={largura} onChange={(e) => setLargura(mask(e.target.value, ['9,999', '99,999', '99,999', '999,99']))} className='inputs' placeholder='Largura (cm)' />
 
                     {/* </div> */}
                     <div className="viewTruck"></div>
                     {/* <div className="viewLabel2"> */}
-                        {/* <label className='labelss' >{!isMobile ? 'kg' : 'Peso (kg)'}</label> */}
-                        <input value={peso} placeholder='Peso (kg)' onChange={(e) => setPeso(mask(e.target.value, ['9,999', '99,999']))} className='inputs' />
-                        {/* <input type='number' value={peso}  className='inputpreco' placeholder='Peso' /> */}
-                        {/* <Input className='inputpreco' placeholder='Peso' onChange={handleChangePeso} /> */}
+                    {/* <label className='labelss' >{!isMobile ? 'kg' : 'Peso (kg)'}</label> */}
+                    <input value={peso} placeholder='Peso (kg)' onChange={(e) => setPeso(mask(e.target.value, ['9,999', '99,999']))} className='inputs' />
+                    {/* <input type='number' value={peso}  className='inputpreco' placeholder='Peso' /> */}
+                    {/* <Input className='inputpreco' placeholder='Peso' onChange={handleChangePeso} /> */}
                     {/* </div> */}
                 </div>
                 {results.length !== 0 &&
@@ -161,6 +175,8 @@ const FormMain: React.FC = () => {
                         <table>
                             <thead>
                                 <tr>
+                                    <th>Origem</th>
+                                    <th>Destino</th>
                                     <th>Serviço</th>
                                     <th>Prazo de entrega</th>
                                     <th>Preço</th>
@@ -170,6 +186,8 @@ const FormMain: React.FC = () => {
                                 {results.map((res, index) => {
                                     return (
                                         <tr key={index}>
+                                            <td>{CEPORIGEM}</td>
+                                            <td>{CEPDESTINO}</td>
                                             <td>{res.service}</td>
                                             <td>{res.days} dias</td>
                                             <td>R${String(res.pricing).replace('.', ',')}</td>
@@ -179,7 +197,7 @@ const FormMain: React.FC = () => {
                             </tbody>
                         </table>
                     </div>
- }
+                }
                 <span onClick={handleSubmit} defaultValue={'Calcular'} >{`Calcular`}</span>
             </div>
         </div>
