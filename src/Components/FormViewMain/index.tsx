@@ -13,7 +13,7 @@ const FormViewMain: React.FC = () => {
                 <FormMain /> :
                 <Order />}
             <div onClick={() => setIsVisible(!isVisible)} className="floatbutton zero">
-                <img src={Rast} width='80%' height='80%' alt="Rastrear Objeto" />
+                <img src={Rast} width='60%' height='60%' alt="Rastrear Objeto" />
             </div>
         </div>
     )
