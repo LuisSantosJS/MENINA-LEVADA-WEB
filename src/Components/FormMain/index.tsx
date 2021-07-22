@@ -14,8 +14,24 @@ interface RESULT {
     service: string;
 }
 
+interface RESULT2 {
+    cepdes: string;
+    cepori: string;
+    cnpj: string;
+    conta: string;
+    contrato: string;
+    modalidade: number;
+    peso: number;
+    prazo: number;
+    tpentrega: string;
+    tpseguro: string;
+    vldeclarado: number;
+    vltotal: number;
+}
+
 const FormMain: React.FC = () => {
     const { config } = useConfig();
+
     const { addToast } = useToasts();
     const [pricing, setPricing] = useState<string>('');
     const [cep, setCep] = useState<string>('');
@@ -23,9 +39,25 @@ const FormMain: React.FC = () => {
     const [largura, setLargura] = useState<string>('');
     const [altura, setAltura] = useState<string>('');
     const [peso, setPeso] = useState<string>('');
-    const [CEPORIGEM, setCEPORIGEM] =  useState<string>('');
+    const [isJadLog, setIsJadLog] = useState<boolean>(false);
+    const [CEPORIGEM, setCEPORIGEM] = useState<string>('');
     const [CEPDESTINO, setCEPDESTINO] = useState<string>('');
     const [results, setResults] = useState<RESULT[]>([]);
+    const [loading, setLoading] = useState<boolean>(false)
+    const [resultJadLog, setResultJadLog] = useState<RESULT2>({
+        cepdes: '',
+        cepori: '',
+        cnpj: '',
+        conta: '',
+        contrato: '',
+        modalidade: 0,
+        peso: 0,
+        prazo: 0,
+        tpentrega: '',
+        tpseguro: '',
+        vldeclarado: 0,
+        vltotal: 0
+    })
     const SERVICES = [
         {
             cod: '04014',
@@ -74,8 +106,18 @@ const FormMain: React.FC = () => {
         return A.data.res
     }
 
+    let configg = {
+        headers: {
+            'Authorization': `Bearer ` + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOjEwNjg4NiwiZHQiOiIyMDIxMDcwNiJ9._AzMLO8Iz829iSd5icRQ5KThSmpa9wq3vdc49USOO-c'
+        }
+    }
 
-    const handleSubmit =  async() => {
+    const handleSubmit = async () => {
+        if (isJadLog) {
+            return submitJadLog()
+        }
+        if (loading) return;
+        setLoading(true)
         setResults([]);
         SERVICES.forEach(ser => {
             const DATA = {
@@ -111,15 +153,51 @@ const FormMain: React.FC = () => {
                         setResults(results => [...results, RESU])
                     }
                 }
+            }).finally(() => {
+                setLoading(false)
             })
         })
         const ori = await getLocation(config.origin)
         const dest = await getLocation(Number(cep))
+        console.log('origem:', ori)
+        console.log('destino:', dest)
         setCEPDESTINO(dest);
         setCEPORIGEM(ori)
         return console.log('result', results)
     }
 
+    const submitJadLog = async () => {
+        if (loading) return;
+        setLoading(true)
+        const ori = await getLocation(config.origin)
+        const dest = await getLocation(Number(cep))
+        const data = {
+            frete: [
+                {
+                    cepori: ori,
+                    cepdes: dest,
+                    frap: 897,
+                    peso: peso.replace(',', '.'),
+                    cnpj: 21780324000109,
+                    conta: "0",
+                    contrato: "0",
+                    modalidade: 3,
+                    tpentrega: "D",
+                    tpseguro: "N",
+                    vldeclarado: String(pricing).replace(',', '.') + String(config.addition_price).replace(',', '.'),
+                    vlcoleta: null
+                }
+            ]
+        }
+
+        api.post('https://www.jadlog.com.br/embarcador/api/frete/valor', data, configg).then(e => {
+            setResultJadLog(e.data.frete[0])
+        }).finally(() => {
+            setLoading(false)
+        })
+
+
+    }
 
 
     return (
@@ -170,7 +248,13 @@ const FormMain: React.FC = () => {
                     {/* <Input className='inputpreco' placeholder='Peso' onChange={handleChangePeso} /> */}
                     {/* </div> */}
                 </div>
-                {results.length !== 0 &&
+
+                <div className='viewRowwaa'>
+                    <input value={String(isJadLog)} onChange={(e) => setIsJadLog(!isJadLog)} id='ccc' type='checkbox' />
+                    <label className='viewRowwaaText' htmlFor='ccc'>Usar API da JadLog</label>
+                </div>
+
+                {!isJadLog && results.length !== 0 &&
                     <div className="viewResultado">
                         <table>
                             <thead>
@@ -198,7 +282,32 @@ const FormMain: React.FC = () => {
                         </table>
                     </div>
                 }
-                <span onClick={handleSubmit} defaultValue={'Calcular'} >{`Calcular`}</span>
+                {isJadLog && resultJadLog.cnpj.length !== 0 && (
+                    <div className="viewResultado">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Origem</th>
+                                    <th>Destino</th>
+                                    <th>Serviço</th>
+                                    <th>Prazo de entrega</th>
+                                    <th>Preço</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{resultJadLog.cepori}</td>
+                                    <td>{resultJadLog.cepdes}</td>
+                                    <td>JadLog</td>
+                                    <td>{resultJadLog.prazo} dias</td>
+                                    <td>R${String(resultJadLog.vltotal).replace('.', ',')}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                )
+                }
+                <span onClick={handleSubmit} > {loading ? 'Carregando...' : `Calcular`}</span>
             </div>
         </div>
     )
