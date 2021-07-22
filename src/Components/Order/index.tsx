@@ -86,7 +86,7 @@ const Order: React.FC = () => {
             {/* <div className={results.length === 0 ? 'form-view-initial' : "form-view"}> */}
             <div className={"view-rast"}>
                 <img src={Logo2} width='80%' height='50%' alt="Menina Levada" />
-                <input value={code} onChange={(e) => setCode(e.target.value)} placeholder='insira o código de rastreio' className='inputr' type="text" />
+                <input value={code} onChange={(e) => setCode(e.target.value)} placeholder={`Insira o código de rastreio ${isJadLog ? '(shipmentId)' : ''}`} className='inputr' type="text" />
                 <div className='viewRowwaa'>
                     <input value={String(isJadLog)} onChange={(e) => setIsJadLog(!isJadLog)} id='ccc' type='checkbox' />
                     <label className='viewRowwaaText' htmlFor='ccc'>Código de rastreio da JadLog</label>
