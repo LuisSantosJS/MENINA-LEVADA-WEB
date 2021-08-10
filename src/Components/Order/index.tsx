@@ -19,9 +19,13 @@ interface ITEM {
 const Order: React.FC = () => {
 
     let config = {
-        headers: {
-            'Authorization': `Bearer ` + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOjEwNjg4NiwiZHQiOiIyMDIxMDcwNiJ9._AzMLO8Iz829iSd5icRQ5KThSmpa9wq3vdc49USOO-c'
-        }
+     headers: {
+                'Authorization': `Bearer ` + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOjEwNjg4NiwiZHQiOiIyMDIxMDcwNiJ9._AzMLO8Iz829iSd5icRQ5KThSmpa9wq3vdc49USOO-c',
+                'x-apikey': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOjEwNjg4NiwiZHQiOiIyMDIxMDcwNiJ9._AzMLO8Iz829iSd5icRQ5KThSmpa9wq3vdc49USOO-c',
+                'Access-Control-Allow-Origin' : '*',
+                'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+            }
+        
     }
 
     const { addToast } = useToasts();
@@ -32,7 +36,7 @@ const Order: React.FC = () => {
     const handleSubmitJadLog = () => {
         axios.post(`https://www.jadlog.com.br/embarcador/api/tracking/consultar`, {
             consulta: [
-                { shipmentId: code }
+                { shipmentId: code } 
             ]
         }, config).then((e) => {
             setResults(e.data.consulta[0].tracking.eventos)

@@ -108,7 +108,10 @@ const FormMain: React.FC = () => {
 
     let configg = {
         headers: {
-            'Authorization': `Bearer ` + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOjEwNjg4NiwiZHQiOiIyMDIxMDcwNiJ9._AzMLO8Iz829iSd5icRQ5KThSmpa9wq3vdc49USOO-c'
+            'Authorization': `Bearer ` + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOjEwNjg4NiwiZHQiOiIyMDIxMDcwNiJ9._AzMLO8Iz829iSd5icRQ5KThSmpa9wq3vdc49USOO-c',
+            'x-apikey': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOjEwNjg4NiwiZHQiOiIyMDIxMDcwNiJ9._AzMLO8Iz829iSd5icRQ5KThSmpa9wq3vdc49USOO-c',
+            'Access-Control-Allow-Origin' : '*',
+            'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         }
     }
 
