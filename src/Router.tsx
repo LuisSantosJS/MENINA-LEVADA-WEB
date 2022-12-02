@@ -14,7 +14,8 @@ function Routes() {
     const { userSaved } = useUserSaved();
     const { userID } = useUserID();
     return (
-
+<>
+{/* @ts-ignore */}
         <ToastProvider
             autoDismiss
             autoDismissTimeout={4000}
@@ -50,7 +51,7 @@ function Routes() {
                 </Switch>
             </BrowserRouter>
         </ToastProvider>
-
+</>
     )
 }
 
