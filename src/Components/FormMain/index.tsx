@@ -4,9 +4,12 @@ import './styles.css';
 import { isMobile } from 'react-device-detect';
 import Truck from '../../Assets/delivery.png';
 import { useConfig } from '../../Context/ContextConfig';
+import http from "http"
+import https from "https"
 import { useToasts } from 'react-toast-notifications';
 // @ts-ignore
 import { mask } from 'remask';
+import axios from 'axios';
 
 interface RESULT {
     pricing: string;
@@ -111,6 +114,7 @@ const FormMain: React.FC = () => {
             'Authorization': `Bearer ` + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOjEwNjg4NiwiZHQiOiIyMDIxMDcwNiJ9._AzMLO8Iz829iSd5icRQ5KThSmpa9wq3vdc49USOO-c',
             'x-apikey': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOjEwNjg4NiwiZHQiOiIyMDIxMDcwNiJ9._AzMLO8Iz829iSd5icRQ5KThSmpa9wq3vdc49USOO-c',
             'Access-Control-Allow-Origin' : '*',
+            "Accept": "*",
             'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         }
     }
@@ -172,8 +176,8 @@ const FormMain: React.FC = () => {
     const submitJadLog = async () => {
         if (loading) return;
         setLoading(true)
-        const ori = await getLocation(config.origin)
-        const dest = await getLocation(Number(cep))
+        const ori = config.origin
+        const dest = Number(cep)
         const data = {
             frete: [
                 {
@@ -187,13 +191,40 @@ const FormMain: React.FC = () => {
                     modalidade: 3,
                     tpentrega: "D",
                     tpseguro: "N",
-                    vldeclarado: String(pricing).replace(',', '.') + String(config.addition_price).replace(',', '.'),
+                    vldeclarado:Number( String(pricing).replace(',', '.')) + Number(String(config.addition_price).replace(',', '.')),
                     vlcoleta: null
                 }
             ]
         }
 
-        api.post('https://www.jadlog.com.br/embarcador/api/frete/valor', data, configg).then(e => {
+        const httpAgent = new http.Agent({ keepAlive: true })
+        const httpsAgent = new https.Agent({ keepAlive: true })
+
+        const api0 = axios.create({
+            baseURL: "https://www.jadlog.com.br",
+            httpAgent,
+            httpsAgent,
+            
+        })
+
+        api0.post('/embarcador/api/frete/valor', {
+          frete: [
+                {
+                  cepdes: 69921325,
+                  cepori: 80530110,
+                  cnpj: 21780324000109,
+                  conta: "0",
+                  contrato: "0",
+                  frap: 897,
+                  modalidade: 3,
+                  peso: "0.80",
+                  tpentrega: "D",
+                  tpseguro: "N",
+                  vlcoleta: null,
+                  vldeclarado: "40"
+                }
+            ]
+        }, configg).then(e => {
             setResultJadLog(e.data.frete[0])
         }).finally(() => {
             setLoading(false)
