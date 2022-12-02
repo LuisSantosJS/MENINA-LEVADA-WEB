@@ -225,6 +225,7 @@ const FormMain: React.FC = () => {
                 }
             ]
         }, configg).then(e => {
+            console.log(e)
             setResultJadLog(e.data.frete[0])
         }).finally(() => {
             setLoading(false)
